@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Founderpath — Get capital without selling your equity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Fonts ─────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Founders Grotesk';
+      src: url('assets/fonts/FoundersGrotesk-Regular.otf') format('opentype');
+      font-weight: 400 600;
+      font-style: normal;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button, a { cursor: pointer; }
+
+    /* ─── Tokens ─────────────────────────────────────────────── */
+    :root {
+      --brand: #443dd8;
+      --brand-shadow: rgba(39, 98, 252, 0.1);
+      --text-primary: #111;
+      --text-secondary: #515765;
+      --text-muted: #838792;
+      --bg-subtle: #eeeff0;
+      --border: #e0e6ef;
+      --border-subtle: rgba(0,0,0,0.08);
+      --radius-sm: 6px;
+      --radius-md: 16px;
+      --radius-lg: 20px;
+      --max-w: 1200px;
+      --page-px: 120px;
+    }
+
+    /* ─── Layout helpers ─────────────────────────────────────── */
+    .page-wrap {
+      width: 100%;
+      max-width: calc(var(--max-w) + var(--page-px) * 2);
+      margin: 0 auto;
+      padding-left: var(--page-px);
+      padding-right: var(--page-px);
+    }
+
+    /* ─── Nav ────────────────────────────────────────────────── */
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+    .nav-logo { height: 28px; width: auto; flex-shrink: 0; }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: #464646;
+      padding: 4px 8px;
+      border-radius: 8px;
+      line-height: 24px;
+      white-space: nowrap;
+    }
+    .nav-link:hover { background: var(--bg-subtle); }
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      white-space: nowrap;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-secondary {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+      box-shadow: 0px 4px 4px var(--brand-shadow);
+    }
+    .btn-primary:hover { background: #3832b8; }
+    .btn-secondary:hover { background: var(--bg-subtle); }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    .hero {
+      padding-top: 64px;
+      padding-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .hero-top {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-badge img { height: 13px; width: auto; }
+    .hero-badge-text {
+      font-size: 14px;
+      color: #3d8326;
+      letter-spacing: 0.16px;
+      line-height: 24px;
+    }
+    .hero-content {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .hero-headline {
+      flex: 1;
+    }
+    .hero-headline h1 {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 56px;
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+    .hero-sub {
+      flex-shrink: 0;
+      width: 454px;
+    }
+    .hero-sub p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 24px;
+      letter-spacing: 0.16px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .btn-primary-lg {
+      background: var(--brand);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      line-height: 24px;
+      box-shadow: 0px 4px 4px var(--brand-shadow);
+      font-family: 'Inter', sans-serif;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-primary-lg:hover { background: #3832b8; }
+    .btn-outline-lg {
+      background: #fff;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      line-height: 24px;
+      border: 1px solid var(--border);
+      font-family: 'Inter', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline-lg:hover { background: var(--bg-subtle); }
+
+    /* ─── Social proof cards ─────────────────────────────────── */
+    .social-proof-wrap {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-lg);
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .social-proof-cards {
+      display: flex;
+      gap: 4px;
+    }
+    .proof-card {
+      flex: 1;
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+    }
+    .proof-card-logo {
+      padding: 8px;
+      height: 51px;
+      display: flex;
+      align-items: center;
+    }
+    .proof-card-logo img { height: 20px; width: auto; }
+    .proof-card-thumb {
+      background: #1a1a2e;
+      border-radius: 12px;
+      height: 188px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+    .proof-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .proof-card-body {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .proof-card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 22px;
+      letter-spacing: 0.16px;
+    }
+    .proof-card-amount-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 24px;
+    }
+    .proof-card-amount {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+    .social-proof-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+    }
+    .proof-stars {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .stars-row { display: flex; gap: 3px; }
+    .star { width: 12px; height: 12px; }
+    .star svg { width: 12px; height: 12px; }
+    .proof-count {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 24px;
+      letter-spacing: 0.16px;
+    }
+    .proof-powered {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 24px;
+    }
+    .proof-powered img { height: 20px; width: auto; }
+
+    /* ─── Section ────────────────────────────────────────────── */
+    .section {
+      padding-top: 24px;
+      padding-bottom: 80px;
+    }
+    .section-heading {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 48px;
+    }
+
+    /* ─── Products ───────────────────────────────────────────── */
+    .products-grid {
+      display: flex;
+      gap: 24px;
+    }
+    .product-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .product-visual {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-lg);
+      height: 324px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-visual img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .product-visual-gradient-r {
+      position: absolute;
+      top: 0; right: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(238,239,240,0), rgba(238,239,240,0.6));
+      pointer-events: none;
+    }
+    .product-visual-gradient-b {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 35%;
+      background: linear-gradient(to bottom, rgba(238,239,240,0), rgba(238,239,240,0.6));
+      pointer-events: none;
+    }
+    .product-info { display: flex; flex-direction: column; gap: 16px; }
+    .product-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 24px;
+    }
+    .product-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 24px;
+      letter-spacing: 0.16px;
+    }
+
+    /* ─── Stats ──────────────────────────────────────────────── */
+    .stats-section {
+      padding-top: 0;
+      padding-bottom: 80px;
+    }
+    .stats-header {
+      margin-bottom: 48px;
+    }
+    .stats-month {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      line-height: 24px;
+      margin-bottom: 24px;
+    }
+    .stats-title {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+    .stats-tiles {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .stat-tile {
+      flex: 1;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-number {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 24px;
+      letter-spacing: 0.16px;
+    }
+    .testimonials-grid {
+      display: flex;
+      gap: 16px;
+    }
+    .testimonial-card {
+      flex: 1;
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px;
+    }
+    .testimonial-thumb {
+      background: #1a1a2e;
+      border-radius: 12px;
+      height: 188px;
+      width: 100%;
+    }
+    .testimonial-body {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .testimonial-company { height: 34px; display: flex; align-items: center; }
+    .testimonial-company img { height: 28px; width: auto; max-width: 120px; object-fit: contain; }
+    .testimonial-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 22px;
+      letter-spacing: 0.16px;
+    }
+    .testimonial-amount-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 24px;
+    }
+    .testimonial-amount {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    /* ─── How it works ───────────────────────────────────────── */
+    .how-section {
+      padding-top: 0;
+      padding-bottom: 80px;
+    }
+    .how-inner {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+    }
+    .how-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .how-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .how-right img {
+      width: 100%;
+      max-width: 540px;
+      border-radius: var(--radius-lg);
+    }
+    .how-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .how-step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 100px;
+      background: #fff;
+      box-shadow: 0px 4px 8px -2px rgba(68, 61, 216, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      flex-shrink: 0;
+    }
+    .step-text {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 24px;
+      letter-spacing: 0.16px;
+      padding-top: 4px;
+    }
+    .how-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .how-cta-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 24px;
+      letter-spacing: 0.16px;
+      max-width: 362px;
+    }
+
+    /* ─── Logos strip ────────────────────────────────────────── */
+    .logos-section {
+      padding-top: 0;
+      padding-bottom: 80px;
+    }
+    .logos-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 24px;
+      margin-bottom: 24px;
+      letter-spacing: 0.16px;
+    }
+    .logos-strip {
+      width: 100%;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo { height: 24px; width: auto; }
+    .footer-copy {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 24px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-link {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 24px;
+    }
+    .footer-link:hover { color: var(--text-primary); }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─────────────────────────────────────── -->
+  <header>
+    <div class="page-wrap">
+      <nav class="nav">
+        <div style="flex:1; min-width:0;">
+          <img src="assets/images/logo.svg" alt="Founderpath" class="nav-logo" />
+        </div>
+        <div class="nav-links">
+          <a href="#" class="nav-link">Product</a>
+          <a href="#" class="nav-link">Industry</a>
+          <a href="#" class="nav-link">Resources</a>
+          <a href="#" class="nav-link">Partners</a>
+          <a href="#" class="nav-link">Blog</a>
+          <a href="#" class="nav-link">About us</a>
+        </div>
+        <div class="nav-actions" style="flex:1; min-width:0; justify-content:flex-end; display:flex; gap:8px;">
+          <button class="btn btn-secondary">Login</button>
+          <button class="btn btn-primary">Sign up</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── Hero ───────────────────────────────────────────── -->
+  <section>
+    <div class="page-wrap">
+      <div class="hero">
+
+        <div class="hero-top">
+          <!-- TechCrunch badge -->
+          <div class="hero-badge">
+            <img src="assets/images/techcrunch.svg" alt="TechCrunch" />
+            <span class="hero-badge-text">TechCrunch: Founderpath Raises $145m SaaS Fund &rarr;</span>
+          </div>
+
+          <!-- Headline + subtext -->
+          <div class="hero-content">
+            <div class="hero-headline">
+              <h1>Get capital without<br />selling your equity</h1>
+            </div>
+            <div class="hero-sub">
+              <p>Founderpath provides non-dilutive capital to ambitious founders. Connect your data, review your offer, and get funded in 24 hours.</p>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="hero-actions">
+            <button class="btn-primary-lg">Request Capital</button>
+            <button class="btn-outline-lg">or talk to VP of Investments</button>
+          </div>
+        </div>
+
+        <!-- Social proof cards -->
+        <div class="social-proof-wrap">
+          <div class="social-proof-cards">
+
+            <div class="proof-card">
+              <div class="proof-card-logo">
+                <img src="assets/images/cybersmart.svg" alt="CyberSmart" />
+              </div>
+              <div class="proof-card-thumb">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e 0%,#2d2d5e 100%);"></div>
+              </div>
+              <div class="proof-card-body">
+                <p class="proof-card-desc">CEO Jamie Akhtar shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+                <div>
+                  <p class="proof-card-amount-label">In the amount of</p>
+                  <p class="proof-card-amount">$1,452,000</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="proof-card">
+              <div class="proof-card-logo">
+                <img src="assets/images/company-logo-3.svg" alt="Company" />
+              </div>
+              <div class="proof-card-thumb">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e 0%,#2d2d5e 100%);"></div>
+              </div>
+              <div class="proof-card-body">
+                <p class="proof-card-desc">CEO Jamie Akhtar shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+                <div>
+                  <p class="proof-card-amount-label">In the amount of</p>
+                  <p class="proof-card-amount">$1,452,000</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="proof-card">
+              <div class="proof-card-logo">
+                <img src="assets/images/company-logo-2.svg" alt="Company" />
+              </div>
+              <div class="proof-card-thumb">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e 0%,#2d2d5e 100%);"></div>
+              </div>
+              <div class="proof-card-body">
+                <p class="proof-card-desc">CEO Jamie Akhtar shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+                <div>
+                  <p class="proof-card-amount-label">In the amount of</p>
+                  <p class="proof-card-amount">$1,452,000</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="social-proof-footer">
+            <div class="proof-stars">
+              <div class="stars-row">
+                <!-- 5 stars -->
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
+              </div>
+              <span class="proof-count">$220m Funded to 550 founders &rarr;</span>
+            </div>
+            <div class="proof-powered">
+              <span>Powered by</span>
+              <img src="assets/images/logo.svg" alt="Founderpath" style="height:20px;" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Products ───────────────────────────────────────── -->
+  <section class="section">
+    <div class="page-wrap">
+      <h2 class="section-heading">Products</h2>
+      <div class="products-grid">
+
+        <div class="product-card">
+          <div class="product-visual">
+            <img src="assets/images/product-1.svg" alt="Revenue Financing" />
+            <div class="product-visual-gradient-b"></div>
+          </div>
+          <div class="product-info">
+            <p class="product-name">Revenue Financing</p>
+            <p class="product-desc">For software companies with $1–3m in annual revenue looking for capital in 24 hours</p>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-visual">
+            <img src="assets/images/product-2.svg" alt="Term Loans" />
+            <div class="product-visual-gradient-r"></div>
+          </div>
+          <div class="product-info">
+            <p class="product-name">Term Loans</p>
+            <p class="product-desc">For mature software companies with $3m+ in annual revenues looking for interest only periods, no warrants, and 4 year paybacks</p>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-visual">
+            <img src="assets/images/product-3.svg" alt="SaaS Line of Credit" />
+            <div class="product-visual-gradient-r"></div>
+          </div>
+          <div class="product-info">
+            <p class="product-name">SaaS Line of Credit</p>
+            <p class="product-desc">Flexible revolving credit for SaaS businesses that need ongoing access to capital as they grow</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Stats + Testimonials ───────────────────────────── -->
+  <section class="stats-section">
+    <div class="page-wrap">
+      <div class="stats-header">
+        <p class="stats-month">June 2026</p>
+        <h2 class="stats-title">$13M new capital committed this month</h2>
+      </div>
+
+      <div class="stats-tiles">
+        <div class="stat-tile">
+          <p class="stat-number">731</p>
+          <p class="stat-label">SaaS companies funded since 2021</p>
+        </div>
+        <div class="stat-tile">
+          <p class="stat-number">$271M</p>
+          <p class="stat-label">deployed to founders</p>
+        </div>
+        <div class="stat-tile">
+          <p class="stat-number">4.9</p>
+          <p class="stat-label">Out of 5 on Trustpilot &mdash; 100+ reviews &rarr;</p>
+        </div>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="testimonial-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
+          <div class="testimonial-body">
+            <div class="testimonial-company">
+              <img src="assets/images/company-logo-1.svg" alt="Company" />
+            </div>
+            <p class="testimonial-desc">CEO Steve Benson shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+            <div>
+              <p class="testimonial-amount-label">In the amount of</p>
+              <p class="testimonial-amount">$4,200,000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
+          <div class="testimonial-body">
+            <div class="testimonial-company">
+              <img src="assets/images/company-logo-2.svg" alt="Company" />
+            </div>
+            <p class="testimonial-desc">CEO Scott Pielsticker shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+            <div>
+              <p class="testimonial-amount-label">In the amount of</p>
+              <p class="testimonial-amount">$1,000,000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
+          <div class="testimonial-body">
+            <div class="testimonial-company">
+              <img src="assets/images/company-logo-3.svg" alt="Company" />
+            </div>
+            <p class="testimonial-desc">CEO Larry Kim shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+            <div>
+              <p class="testimonial-amount-label">In the amount of</p>
+              <p class="testimonial-amount">$2,800,000</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How it works ───────────────────────────────────── -->
+  <section class="how-section">
+    <div class="page-wrap">
+      <div class="how-inner">
+
+        <div class="how-left">
+          <h2 class="section-heading" style="margin-bottom:0;">How to get funded in 24 hours</h2>
+
+          <div class="how-steps">
+            <div class="how-step">
+              <div class="step-number">1</div>
+              <p class="step-text">Connect your billing and banking data. It takes less than 5 minutes.</p>
+            </div>
+            <div class="how-step">
+              <div class="step-number">2</div>
+              <p class="step-text">See your offer — every number, no surprises.</p>
+            </div>
+            <div class="how-step">
+              <div class="step-number">3</div>
+              <p class="step-text">Sign and get funded. Capital lands in 24–48 hours.</p>
+            </div>
+          </div>
+
+          <div class="how-cta">
+            <div>
+              <button class="btn-outline-lg">Get your offer &rarr;</button>
+            </div>
+            <p class="how-cta-sub">Start in less than 5 minutes. Use the capital where it helps your SaaS business grow next.</p>
+          </div>
+        </div>
+
+        <div class="how-right">
+          <img src="assets/images/logos.svg" alt="Trusted by leading SaaS companies" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Partner logos strip ────────────────────────────── -->
+  <section class="logos-section">
+    <div class="page-wrap">
+      <p class="logos-label">Trusted by 700+ SaaS companies</p>
+      <img src="assets/images/logos.svg" alt="Company logos" class="logos-strip" style="opacity:0.7;" />
+    </div>
+  </section>
+
+  <!-- ─── Footer ─────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="page-wrap">
+      <div class="footer-inner">
+        <img src="assets/images/logo.svg" alt="Founderpath" class="footer-logo" />
+        <div class="footer-links">
+          <a href="#" class="footer-link">Privacy</a>
+          <a href="#" class="footer-link">Terms</a>
+          <a href="#" class="footer-link">Contact</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Founderpath. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
