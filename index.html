@@ -119,7 +119,9 @@
     .hero-top {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 40px;
+      text-align: center;
     }
     .hero-badge {
       display: flex;
@@ -133,14 +135,6 @@
       letter-spacing: 0.16px;
       line-height: 24px;
     }
-    .hero-content {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    .hero-headline {
-      flex: 1;
-    }
     .hero-headline h1 {
       font-family: 'Founders Grotesk', sans-serif;
       font-size: 56px;
@@ -148,21 +142,22 @@
       line-height: 1.1;
       color: var(--text-primary);
       letter-spacing: -0.5px;
-    }
-    .hero-sub {
-      flex-shrink: 0;
-      width: 454px;
+      max-width: 714px;
+      text-align: center;
     }
     .hero-sub p {
       font-size: 16px;
       color: var(--text-secondary);
       line-height: 24px;
       letter-spacing: 0.16px;
+      max-width: 654px;
+      text-align: center;
     }
     .hero-actions {
       display: flex;
       gap: 8px;
       align-items: center;
+      justify-content: center;
     }
     .btn-primary-lg {
       background: var(--brand);
@@ -882,13 +877,9 @@
           </div>
 
           <!-- Headline + subtext -->
-          <div class="hero-content">
-            <div class="hero-headline">
-              <h1>Get capital without<br />selling your equity</h1>
-            </div>
-            <div class="hero-sub">
-              <p>Founderpath provides non-dilutive capital to ambitious founders. Connect your data, review your offer, and get funded in 24 hours.</p>
-            </div>
+          <h1 class="hero-headline" style="margin:0;">Get capital without<br />selling your equity</h1>
+          <div class="hero-sub">
+            <p>Founderpath provides non-dilutive capital to ambitious founders. Connect your data, review your offer, and get funded in 24 hours.</p>
           </div>
 
           <!-- CTAs -->
