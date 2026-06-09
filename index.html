@@ -762,34 +762,37 @@
 
     /* ─── How it works ───────────────────────────────────────── */
     .how-section {
-      background: var(--bg-subtle);
+      background: #fff;
       padding-top: 80px;
       padding-bottom: 80px;
     }
+    .how-card {
+      background: var(--bg-subtle);
+      border-radius: 20px;
+      padding: 96px 64px;
+    }
     .how-inner {
       display: flex;
-      gap: 80px;
+      gap: 48px;
       align-items: center;
     }
     .how-left {
-      flex: 0 0 420px;
+      flex: 0 0 434px;
       display: flex;
       flex-direction: column;
-      gap: 48px;
+      gap: 40px;
+    }
+    .how-heading {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 40px;
+      color: var(--text-primary);
     }
     .how-right {
       flex: 1;
       min-width: 0;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-    .how-right img {
-      width: 100%;
-      height: auto;
-      max-height: 280px;
-      object-fit: contain;
-      object-position: right center;
+      overflow: hidden;
     }
     .how-steps {
       display: flex;
@@ -825,14 +828,66 @@
     .how-cta {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
     .how-cta-sub {
       font-size: 14px;
       color: var(--text-secondary);
-      line-height: 24px;
+      line-height: 20px;
       letter-spacing: 0.16px;
       max-width: 362px;
+    }
+
+    /* ─── Integration carousel ───────────────────────────────── */
+    @keyframes scrollLeft {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes scrollRight {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .integrations-carousel {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+    .carousel-row {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+    .carousel-track {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+    }
+    .carousel-row-1 .carousel-track { animation: scrollLeft 22s linear infinite; }
+    .carousel-row-2 .carousel-track { animation: scrollRight 18s linear infinite; }
+    .carousel-row-3 .carousel-track { animation: scrollLeft 26s linear infinite; }
+    .int-card {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: #fff;
+      border-radius: 4px;
+      padding: 7px 14px;
+      height: 36px;
+      white-space: nowrap;
+      box-shadow: 0px 5px 10px -4px rgba(54,56,64,0.06), 0px 1px 0px rgba(112,119,137,0.08), 0px 1px 2px rgba(54,56,64,0.08);
+      flex-shrink: 0;
+    }
+    .int-card-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .int-card-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #111;
     }
 
     /* ─── Logos strip ────────────────────────────────────────── */
@@ -1183,38 +1238,109 @@
   <!-- ─── How it works ───────────────────────────────────── -->
   <section class="how-section">
     <div class="page-wrap">
-      <div class="how-inner">
+      <div class="how-card scroll-reveal">
+        <div class="how-inner">
 
-        <div class="how-left">
-          <h2 class="section-heading" style="margin-bottom:0;">Three steps to apply and get capital</h2>
+          <div class="how-left">
+            <h2 class="how-heading">Three steps to apply and get capital</h2>
 
-          <div class="how-steps">
-            <div class="how-step scroll-reveal" style="--reveal-delay:0.1s">
-              <div class="step-number">1</div>
-              <p class="step-text">Connect tools like Stripe, QuickBooks, or your bank — or upload files if needed.</p>
+            <div class="how-steps">
+              <div class="how-step">
+                <div class="step-number">1</div>
+                <p class="step-text">Connect tools like Stripe, QuickBooks, or your bank — or upload files if needed.</p>
+              </div>
+              <div class="how-step">
+                <div class="step-number">2</div>
+                <p class="step-text">See your offer — every number, no surprises.</p>
+              </div>
+              <div class="how-step">
+                <div class="step-number">3</div>
+                <p class="step-text">Sign and get funded. Capital lands in 24–48 hours.</p>
+              </div>
             </div>
-            <div class="how-step scroll-reveal" style="--reveal-delay:0.22s">
-              <div class="step-number">2</div>
-              <p class="step-text">See your offer — every number, no surprises.</p>
-            </div>
-            <div class="how-step scroll-reveal" style="--reveal-delay:0.34s">
-              <div class="step-number">3</div>
-              <p class="step-text">Sign and get funded. Capital lands in 24–48 hours.</p>
-            </div>
-          </div>
 
-          <div class="how-cta">
-            <div>
+            <div class="how-cta">
               <button class="btn-outline-lg">Get your offer &rarr;</button>
+              <p class="how-cta-sub">Start in less than 5 minutes. Use the capital where it helps your SaaS business grow next.</p>
             </div>
-            <p class="how-cta-sub">Start in less than 5 minutes. Use the capital where it helps your SaaS business grow next.</p>
           </div>
-        </div>
 
-        <div class="how-right">
-          <img src="assets/images/logos.svg" alt="Trusted by leading SaaS companies" />
-        </div>
+          <div class="how-right">
+            <div class="integrations-carousel">
 
+              <!-- Row 1: scrolls left -->
+              <div class="carousel-row carousel-row-1">
+                <div class="carousel-track">
+                  <div class="int-card"><div class="int-card-dot" style="background:#6772e5"></div><span class="int-card-name">Stripe</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#2ca01c"></div><span class="int-card-name">QuickBooks</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#ff6600"></div><span class="int-card-name">Chargebee</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#0059c1"></div><span class="int-card-name">BILL</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6e1e85"></div><span class="int-card-name">Recurly</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#00b4b1"></div><span class="int-card-name">ProfitWell</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#003087"></div><span class="int-card-name">PayPal</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#4caf50"></div><span class="int-card-name">Chargify</span></div>
+                  <!-- duplicate for infinite loop -->
+                  <div class="int-card"><div class="int-card-dot" style="background:#6772e5"></div><span class="int-card-name">Stripe</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#2ca01c"></div><span class="int-card-name">QuickBooks</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#ff6600"></div><span class="int-card-name">Chargebee</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#0059c1"></div><span class="int-card-name">BILL</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6e1e85"></div><span class="int-card-name">Recurly</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#00b4b1"></div><span class="int-card-name">ProfitWell</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#003087"></div><span class="int-card-name">PayPal</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#4caf50"></div><span class="int-card-name">Chargify</span></div>
+                </div>
+              </div>
+
+              <!-- Row 2: scrolls right -->
+              <div class="carousel-row carousel-row-2">
+                <div class="carousel-track">
+                  <div class="int-card"><div class="int-card-dot" style="background:#003087"></div><span class="int-card-name">PayPal</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#4caf50"></div><span class="int-card-name">Chargify</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#0059c1"></div><span class="int-card-name">BILL</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6e1e85"></div><span class="int-card-name">Recurly</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#ff6600"></div><span class="int-card-name">Chargebee</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6772e5"></div><span class="int-card-name">Stripe</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#2ca01c"></div><span class="int-card-name">QuickBooks</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#00b4b1"></div><span class="int-card-name">ProfitWell</span></div>
+                  <!-- duplicate for infinite loop -->
+                  <div class="int-card"><div class="int-card-dot" style="background:#003087"></div><span class="int-card-name">PayPal</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#4caf50"></div><span class="int-card-name">Chargify</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#0059c1"></div><span class="int-card-name">BILL</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6e1e85"></div><span class="int-card-name">Recurly</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#ff6600"></div><span class="int-card-name">Chargebee</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6772e5"></div><span class="int-card-name">Stripe</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#2ca01c"></div><span class="int-card-name">QuickBooks</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#00b4b1"></div><span class="int-card-name">ProfitWell</span></div>
+                </div>
+              </div>
+
+              <!-- Row 3: scrolls left slower -->
+              <div class="carousel-row carousel-row-3">
+                <div class="carousel-track">
+                  <div class="int-card"><div class="int-card-dot" style="background:#ff6600"></div><span class="int-card-name">Chargebee</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6772e5"></div><span class="int-card-name">Stripe</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#00b4b1"></div><span class="int-card-name">ProfitWell</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#003087"></div><span class="int-card-name">PayPal</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#2ca01c"></div><span class="int-card-name">QuickBooks</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#0059c1"></div><span class="int-card-name">BILL</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#4caf50"></div><span class="int-card-name">Chargify</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6e1e85"></div><span class="int-card-name">Recurly</span></div>
+                  <!-- duplicate for infinite loop -->
+                  <div class="int-card"><div class="int-card-dot" style="background:#ff6600"></div><span class="int-card-name">Chargebee</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6772e5"></div><span class="int-card-name">Stripe</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#00b4b1"></div><span class="int-card-name">ProfitWell</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#003087"></div><span class="int-card-name">PayPal</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#2ca01c"></div><span class="int-card-name">QuickBooks</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#0059c1"></div><span class="int-card-name">BILL</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#4caf50"></div><span class="int-card-name">Chargify</span></div>
+                  <div class="int-card"><div class="int-card-dot" style="background:#6e1e85"></div><span class="int-card-name">Recurly</span></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
