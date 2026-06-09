@@ -643,15 +643,23 @@
     }
 
     /* ─── Hero entrance ─────────────────────────────────────── */
-    @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    @keyframes heroBlurUp {
+      from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+      to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
     }
-    .hero-badge    { animation: heroFadeUp 0.7s  cubic-bezier(0.22,1,0.36,1) 0.08s both; }
-    .hero-headline { animation: heroFadeUp 0.85s cubic-bezier(0.22,1,0.36,1) 0.18s both; }
-    .hero-sub      { animation: heroFadeUp 0.85s cubic-bezier(0.22,1,0.36,1) 0.30s both; }
-    .hero-actions  { animation: heroFadeUp 0.85s cubic-bezier(0.22,1,0.36,1) 0.42s both; }
-    .social-proof-wrap { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.56s both, gradientShift 10s ease 1.46s infinite; }
+    @keyframes heroBadgeIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.97); filter: blur(4px); }
+      to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0);   }
+    }
+    @keyframes heroLineReveal {
+      from { opacity: 0; transform: translateY(36px); filter: blur(10px); }
+      to   { opacity: 1; transform: translateY(0);    filter: blur(0);    }
+    }
+    .hero-badge    { animation: heroBadgeIn   0.6s cubic-bezier(0.22,1,0.36,1) 0.05s both; }
+    .hero-headline { animation: heroLineReveal 1.0s cubic-bezier(0.22,1,0.36,1) 0.15s both; }
+    .hero-sub      { animation: heroBlurUp    0.8s cubic-bezier(0.22,1,0.36,1) 0.38s both; }
+    .hero-actions  { animation: heroBlurUp    0.8s cubic-bezier(0.22,1,0.36,1) 0.52s both; }
+    .social-proof-wrap { animation: heroBlurUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.68s both, gradientShift 10s ease 1.58s infinite; }
 
     /* ─── Scroll reveal ──────────────────────────────────────── */
     .scroll-reveal {
@@ -1001,9 +1009,9 @@
     }
     .faq-heading {
       font-family: 'Founders Grotesk', sans-serif;
-      font-size: 88px;
+      font-size: 48px;
       font-weight: 500;
-      line-height: 72px;
+      line-height: 52px;
       color: var(--text-primary);
     }
     .faq-list {
@@ -1638,13 +1646,13 @@
     .wordmark-section {
       background: var(--bg-subtle);
       padding-top: 80px;
-      padding-left: var(--page-px);
-      padding-right: var(--page-px);
+      overflow: hidden;
     }
     .wordmark-text-clip {
       height: 123px;
       overflow: hidden;
       line-height: 1;
+      padding-left: 120px;
     }
     .wordmark-text {
       font-family: 'Founders Grotesk', sans-serif;
@@ -1659,7 +1667,6 @@
     .wordmark-divider {
       height: 1px;
       background: #E6E9F0;
-      margin-top: 0;
     }
 
     /* ─── Announcement bar ──────────────────────────────────── */
@@ -1735,50 +1742,60 @@
     /* ─── Footer ─────────────────────────────────────────────── */
     .footer {
       background: #fff;
-      padding-top: 64px;
-      padding-bottom: 0;
+    }
+    /* Override the inner page-wrap so footer uses full 1200px without extra padding */
+    .footer > .page-wrap {
+      max-width: 1440px;
+      padding: 64px 120px 0;
     }
     .footer-top {
       display: flex;
-      gap: 40px;
-      padding-bottom: 48px;
+      gap: 32px;
+      padding-bottom: 56px;
+      align-items: flex-start;
     }
     .footer-brand {
-      flex: 0 0 160px;
+      flex: 0 0 auto;
+      min-width: 120px;
       display: flex;
       flex-direction: column;
       gap: 16px;
+      padding-top: 8px;
     }
     .footer-logo { height: 24px; width: auto; }
     .footer-cols {
       flex: 1;
       display: flex;
-      gap: 24px;
+      gap: 20px;
+      flex-wrap: nowrap;
+      min-width: 0;
     }
     .footer-col {
       flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 6px;
     }
     .footer-col-title {
-      font-family: 'Founders Grotesk', sans-serif;
-      font-size: 18px;
-      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
       color: #111111;
-      letter-spacing: 0.18px;
       line-height: 20px;
-      padding-top: 8px;
-      padding-bottom: 16px;
+      padding-bottom: 8px;
     }
     .footer-link {
       font-family: 'Inter', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 400;
       color: #515765;
-      line-height: 24px;
+      line-height: 20px;
       text-decoration: none;
       display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .footer-link:hover { color: #111111; }
     .footer-badge-new {
@@ -1824,7 +1841,7 @@
     .footer-compliance img { height: 40px; width: auto; }
     .footer-bottom {
       border-top: 1px solid #E6E9F0;
-      padding: 32px 0;
+      padding: 24px 0 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
