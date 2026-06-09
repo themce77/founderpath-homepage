@@ -1457,6 +1457,211 @@
     .quiz-result-actions { display: flex; gap: 12px; margin-top: 8px; }
     .quiz-restart { cursor: pointer; }
 
+    /* ─── 435 Courses CTA ───────────────────────────────────── */
+    .courses-section {
+      background: var(--bg-subtle);
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .courses-card {
+      background: #060524;
+      border-radius: 16px;
+      padding: 40px 56px 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      overflow: hidden;
+      align-items: center;
+    }
+    .courses-left {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 384px;
+    }
+    .courses-heading {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 40px;
+      letter-spacing: 0.4px;
+      padding-top: 32px;
+      padding-bottom: 8px;
+    }
+    .courses-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #b4bccd;
+      line-height: 24px;
+      padding-bottom: 32px;
+    }
+    .courses-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #443dd8;
+      border: none;
+      border-radius: 6px;
+      padding: 14px 24px;
+      min-height: 48px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0px 1px 3px rgba(0,0,0,0.1), 0px 1px 2px -1px rgba(0,0,0,0.1);
+      align-self: flex-start;
+      transition: background 0.15s;
+    }
+    .courses-btn:hover { background: #3832b8; }
+    .courses-right {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100%;
+      min-height: 340px;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Course card mockup */
+    .course-mockup {
+      position: relative;
+      width: 100%;
+      display: flex;
+      gap: 12px;
+      padding-top: 24px;
+    }
+    .course-mock-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      flex: 1;
+      min-width: 0;
+      font-size: 11px;
+    }
+    .course-mock-card:last-child {
+      margin-top: 32px;
+    }
+    .course-mock-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 12px 8px;
+    }
+    .course-mock-avatar {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: #e0e4ef;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .course-mock-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .course-mock-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #111;
+      line-height: 16px;
+    }
+    .course-mock-company {
+      font-size: 10px;
+      color: #515765;
+      line-height: 14px;
+    }
+    .course-mock-badge {
+      margin-left: auto;
+      background: #7c3aed;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .course-mock-thumb {
+      height: 100px;
+      background: #1e1b4b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .course-mock-thumb-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+    .course-mock-play {
+      position: absolute;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .course-mock-play svg { width: 12px; height: 12px; margin-left: 1px; }
+    .course-mock-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: #111;
+      line-height: 15px;
+      padding: 8px 12px 4px;
+    }
+    .course-mock-section {
+      font-size: 10px;
+      font-weight: 600;
+      color: #515765;
+      padding: 4px 12px 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .course-mock-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 12px;
+      font-size: 10px;
+      color: #515765;
+    }
+    .course-mock-dot {
+      width: 8px; height: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Founderpath Wordmark ───────────────────────────────── */
+    .wordmark-section {
+      background: var(--bg-subtle);
+      padding-top: 80px;
+      padding-left: var(--page-px);
+      padding-right: var(--page-px);
+    }
+    .wordmark-text-clip {
+      height: 123px;
+      overflow: hidden;
+      line-height: 1;
+    }
+    .wordmark-text {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 11vw;
+      font-weight: 500;
+      color: #CFD4DF;
+      white-space: nowrap;
+      line-height: 0.85;
+      display: block;
+      letter-spacing: -0.02em;
+    }
+    .wordmark-divider {
+      height: 1px;
+      background: #E6E9F0;
+      margin-top: 0;
+    }
+
     /* ─── Announcement bar ──────────────────────────────────── */
     .announce-bar {
       background: linear-gradient(135deg, #8D20F7 0%, #02B7FC 100%);
@@ -1530,7 +1735,6 @@
     /* ─── Footer ─────────────────────────────────────────────── */
     .footer {
       background: #fff;
-      border-top: 1px solid var(--border);
       padding-top: 64px;
       padding-bottom: 0;
     }
@@ -2745,6 +2949,75 @@
       </div>
     </div>
   </section>
+  <!-- ─── 435 Courses CTA ─────────────────────────────────── -->
+  <section class="courses-section">
+    <div class="page-wrap">
+      <div class="courses-card scroll-reveal">
+
+        <div class="courses-left">
+          <h2 class="courses-heading">435 Free Courses<br>from Top Founders</h2>
+          <p class="courses-body">Inside our private SaaS CEO community, founders teach each other unique growth strategies, share product strategies, and exchange war stories.</p>
+          <a href="#" class="courses-btn">Get Instant Access</a>
+        </div>
+
+        <div class="courses-right">
+          <div class="course-mockup">
+
+            <div class="course-mock-card">
+              <div class="course-mock-header">
+                <div class="course-mock-avatar"></div>
+                <div>
+                  <p class="course-mock-name">Henry Shuck</p>
+                  <p class="course-mock-company">ZoomInfo</p>
+                </div>
+                <span class="course-mock-badge">Unicorn</span>
+              </div>
+              <div class="course-mock-thumb">
+                <div class="course-mock-play">
+                  <svg viewBox="0 0 24 24" fill="#111"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+              <p class="course-mock-title">The Capital Efficient Founder: Secondaries, Debt Driven Takeovers, IPO Pop</p>
+              <p class="course-mock-section">Templates</p>
+              <div class="course-mock-row"><span class="course-mock-dot" style="background:#443dd8"></span>$40m LOI at 27 Years Old</div>
+              <div class="course-mock-row"><span class="course-mock-dot" style="background:#22b573"></span>Hiring Plan</div>
+              <div class="course-mock-row"><span class="course-mock-dot" style="background:#f59e0b"></span>Ramp Product OKRs (Slide 25)</div>
+            </div>
+
+            <div class="course-mock-card">
+              <div class="course-mock-header">
+                <div class="course-mock-avatar"></div>
+                <div>
+                  <p class="course-mock-name">Geoff Charles</p>
+                  <p class="course-mock-company">Ramp</p>
+                </div>
+                <span class="course-mock-badge">Unicorn</span>
+              </div>
+              <div class="course-mock-thumb">
+                <div class="course-mock-play">
+                  <svg viewBox="0 0 24 24" fill="#111"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+              <p class="course-mock-title">How Ramp Raised $800m in 18 Months, Plans to Grow from 80 to 300</p>
+              <p class="course-mock-section">Templates</p>
+              <div class="course-mock-row"><span class="course-mock-dot" style="background:#f59e0b"></span>Ramp Product OKRs (Slide 25)</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Founderpath wordmark ──────────────────────────────── -->
+  <div class="wordmark-section">
+    <div class="wordmark-text-clip">
+      <span class="wordmark-text">founderpath</span>
+    </div>
+    <div class="wordmark-divider"></div>
+  </div>
+
   <!-- ─── Footer ─────────────────────────────────────────── -->
   <footer class="footer">
     <div class="page-wrap">
