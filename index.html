@@ -526,10 +526,6 @@
     }
 
     /* ─── Section ────────────────────────────────────────────── */
-    .section {
-      padding-top: 24px;
-      padding-bottom: 80px;
-    }
     .section-heading {
       font-family: 'Founders Grotesk', sans-serif;
       font-size: 40px;
@@ -539,23 +535,58 @@
       margin-bottom: 48px;
     }
 
-    /* ─── Products ───────────────────────────────────────────── */
-    .products-grid {
-      display: flex;
-      gap: 24px;
+    /* ─── Products (scroll layout) ──────────────────────────── */
+    .products-section {
+      padding-top: 24px;
+      padding-bottom: 0;
     }
-    .product-card {
-      flex: 1;
+    .product-row {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+      border-top: 1px solid var(--border);
+    }
+    .product-row:last-child { border-bottom: 1px solid var(--border); }
+    .product-row-text {
+      flex: 0 0 340px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s ease;
+      gap: 16px;
     }
-    .product-card:hover { transform: translateY(-4px); }
-    .product-visual {
+    .product-row-heading {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--text-primary);
+    }
+    .product-row-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 24px;
+      letter-spacing: 0.16px;
+    }
+    .btn-learn-more {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      width: fit-content;
+      margin-top: 8px;
+      white-space: nowrap;
+    }
+    .btn-learn-more:hover { background: var(--bg-subtle); }
+    .product-row-visual {
+      flex: 1;
       background: var(--bg-subtle);
       border-radius: var(--radius-lg);
       height: 324px;
@@ -564,11 +595,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .product-visual img {
-      max-height: 100%;
-      max-width: 100%;
-      object-fit: contain;
     }
     .product-visual-gradient-r {
       position: absolute;
@@ -586,18 +612,17 @@
       background: linear-gradient(to bottom, rgba(238,239,240,0), rgba(238,239,240,0.6));
       pointer-events: none;
     }
-    .product-info { display: flex; flex-direction: column; gap: 16px; }
-    .product-name {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text-primary);
-      line-height: 24px;
+
+    /* ─── Scroll reveal ──────────────────────────────────────── */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(56px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .product-desc {
-      font-size: 16px;
-      color: var(--text-secondary);
-      line-height: 24px;
-      letter-spacing: 0.16px;
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ─── Stats ──────────────────────────────────────────────── */
@@ -967,164 +992,164 @@
   </section>
 
   <!-- ─── Products ───────────────────────────────────────── -->
-  <section class="section">
+  <section class="products-section">
     <div class="page-wrap">
-      <h2 class="section-heading">Products</h2>
-      <div class="products-grid">
 
-        <!-- Card 1: Revenue Financing — animated slider -->
-        <a href="#" class="product-card">
-          <div class="product-visual">
-            <div class="pv-widget pv-capital">
-              <div class="cap-card">
-                <p class="cap-title">Instant Capital Offer</p>
-                <p class="cap-amount">$1,000,000</p>
-                <div class="cap-slider-wrap">
-                  <div class="cap-track">
-                    <div class="cap-fill"></div>
-                    <div class="cap-thumb"></div>
-                  </div>
-                  <div class="anim-cursor cap-cursor">
-                    <svg width="13" height="17" viewBox="0 0 13 17" fill="none"><path d="M1 1v12l3-3.5L6.5 15l2-1-2.5-5.5H10L1 1z" fill="white" stroke="#aaa" stroke-width="0.8" stroke-linejoin="round"/></svg>
-                  </div>
+      <!-- Row 1: Revenue Financing -->
+      <div class="product-row scroll-reveal">
+        <div class="product-row-text">
+          <h2 class="product-row-heading">Revenue Financing</h2>
+          <p class="product-row-desc">For software companies with $1–3m in annual revenue looking for capital in 24 hours</p>
+          <a href="#" class="btn-learn-more">Learn more about Revenue Financing</a>
+        </div>
+        <div class="product-row-visual">
+          <div class="pv-widget pv-capital">
+            <div class="cap-card">
+              <p class="cap-title">Instant Capital Offer</p>
+              <p class="cap-amount">$1,000,000</p>
+              <div class="cap-slider-wrap">
+                <div class="cap-track">
+                  <div class="cap-fill"></div>
+                  <div class="cap-thumb"></div>
                 </div>
-                <div class="cap-range"><span>0</span><span>$2,000,000</span></div>
-                <div class="cap-divider"></div>
-                <div class="cap-rows">
-                  <div class="cap-row"><span class="cap-dot cap-dot-gray"></span><span class="cap-label">Total Available</span><span class="cap-val">$2,000,000</span></div>
-                  <div class="cap-row"><span class="cap-dot cap-dot-light"></span><span class="cap-label">Already Taken</span><span class="cap-val">$0</span></div>
-                  <div class="cap-row cap-row-bold"><span class="cap-dot cap-dot-blue"></span><span class="cap-label">Available Today</span><span class="cap-val">$2,000,000</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="product-visual-gradient-b"></div>
-          </div>
-          <div class="product-info">
-            <p class="product-name">Revenue Financing</p>
-            <p class="product-desc">For software companies with $1–3m in annual revenue looking for capital in 24 hours</p>
-          </div>
-        </a>
-
-        <!-- Card 2: Term Loans — animated table rows -->
-        <a href="#" class="product-card">
-          <div class="product-visual">
-            <div class="pv-widget pv-timeline">
-              <div class="tl-card" id="tlCard">
-                <div class="tl-head">
-                  <span>Task</span><span>Key Activities</span><span>Timeline</span>
-                </div>
-                <div class="tl-row" data-badge="2d">
-                  <div class="tl-row-task">Discuss Terms</div>
-                  <div class="tl-activities">
-                    <div class="tl-check"><div class="tl-cb"></div><span>Call to discuss terms</span></div>
-                    <div class="tl-check"><div class="tl-cb"></div><span>Indicative terms via email</span></div>
-                  </div>
-                  <div class="tl-time"><span class="tl-badge">2d</span></div>
-                </div>
-                <div class="tl-row" data-badge="1 week">
-                  <div class="tl-row-task">Term Sheet</div>
-                  <div class="tl-activities">
-                    <div class="tl-check"><div class="tl-cb"></div><span>Circulate Term Sheet</span></div>
-                    <div class="tl-check"><div class="tl-cb"></div><span>Review and execute</span></div>
-                  </div>
-                  <div class="tl-time"><span class="tl-badge">1 week</span></div>
-                </div>
-                <div class="tl-row" data-badge="4d">
-                  <div class="tl-row-task">Credit Review</div>
-                  <div class="tl-activities">
-                    <div class="tl-check"><div class="tl-cb"></div><span>Respond to Credit Committee</span></div>
-                    <div class="tl-check"><div class="tl-cb"></div><span>Complete diligence items</span></div>
-                  </div>
-                  <div class="tl-time"><span class="tl-badge">4d</span></div>
-                </div>
-                <div class="tl-row" data-badge="2-3 wks">
-                  <div class="tl-row-task">Credit Security<br>Agreement (CSA)</div>
-                  <div class="tl-activities">
-                    <div class="tl-check"><div class="tl-cb"></div><span>Circulate rough draft CSA</span></div>
-                    <div class="tl-check"><div class="tl-cb"></div><span>Contract review &amp; execution</span></div>
-                  </div>
-                  <div class="tl-time"><span class="tl-badge">2-3 wks</span></div>
-                </div>
-                <div class="tl-row" data-badge="2d">
-                  <div class="tl-row-task">Close and Wire</div>
-                  <div class="tl-activities">
-                    <div class="tl-check"><div class="tl-cb"></div><span>Circulate closing docs</span></div>
-                    <div class="tl-check"><div class="tl-cb"></div><span>Release Wire</span></div>
-                  </div>
-                  <div class="tl-time"><span class="tl-badge">2d</span></div>
-                </div>
-                <div class="anim-cursor tl-cursor" id="tlCursor" style="left:84px;top:18px;">
+                <div class="anim-cursor cap-cursor">
                   <svg width="13" height="17" viewBox="0 0 13 17" fill="none"><path d="M1 1v12l3-3.5L6.5 15l2-1-2.5-5.5H10L1 1z" fill="white" stroke="#aaa" stroke-width="0.8" stroke-linejoin="round"/></svg>
                 </div>
               </div>
-            </div>
-            <div class="product-visual-gradient-r"></div>
-          </div>
-          <div class="product-info">
-            <p class="product-name">Term Loans</p>
-            <p class="product-desc">For mature software companies with $3m+ in annual revenues looking for interest only periods, no warrants, and 4 year paybacks</p>
-          </div>
-        </a>
-
-        <!-- Card 3: SaaS Line of Credit — animated bar chart -->
-        <a href="#" class="product-card">
-          <div class="product-visual">
-            <div class="pv-widget pv-chart">
-              <div class="chart-card" id="chartCard">
-                <div class="chart-header">
-                  <span class="chart-title">Merchant Cash Advance</span>
-                  <div class="chart-tabs">
-                    <span class="chart-tab active">Monthly</span>
-                    <span class="chart-tab">Quarterly</span>
-                  </div>
-                </div>
-                <div class="chart-legend">
-                  <div class="chart-legend-item"><div class="legend-dot bar-dark"></div><span>New</span></div>
-                  <div class="chart-legend-item"><div class="legend-dot bar-brand"></div><span>Existing</span></div>
-                  <div class="chart-legend-item"><div class="legend-dot bar-light"></div><span>Renewed</span></div>
-                </div>
-                <div class="chart-area">
-                  <div class="chart-y-labels">
-                    <span>$200k</span><span>$150k</span><span>$100k</span><span>$50k</span>
-                  </div>
-                  <div class="chart-bars-wrap" id="chartBars">
-                    <div class="chart-bar-group" data-label="Oct 20" data-value="$182k">
-                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:18px"></div><div class="bar-seg bar-brand" style="height:28px"></div><div class="bar-seg bar-mid" style="height:22px"></div><div class="bar-seg bar-light" style="height:18px"></div></div>
-                      <span class="bar-label">Oct 20</span>
-                    </div>
-                    <div class="chart-bar-group" data-label="Nov 20" data-value="$165k">
-                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:16px"></div><div class="bar-seg bar-brand" style="height:26px"></div><div class="bar-seg bar-mid" style="height:20px"></div><div class="bar-seg bar-light" style="height:16px"></div></div>
-                      <span class="bar-label">Nov 20</span>
-                    </div>
-                    <div class="chart-bar-group" data-label="Dec 20" data-value="$178k">
-                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:17px"></div><div class="bar-seg bar-brand" style="height:27px"></div><div class="bar-seg bar-mid" style="height:21px"></div><div class="bar-seg bar-light" style="height:17px"></div></div>
-                      <span class="bar-label">Dec 20</span>
-                    </div>
-                    <div class="chart-bar-group" data-label="Jan 21" data-value="$194k">
-                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:20px"></div><div class="bar-seg bar-brand" style="height:30px"></div><div class="bar-seg bar-mid" style="height:24px"></div><div class="bar-seg bar-light" style="height:20px"></div></div>
-                      <span class="bar-label">Jan 21</span>
-                    </div>
-                    <div class="chart-bar-group" data-label="Feb 21" data-value="$210k">
-                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:22px"></div><div class="bar-seg bar-brand" style="height:34px"></div><div class="bar-seg bar-mid" style="height:26px"></div><div class="bar-seg bar-light" style="height:22px"></div></div>
-                      <span class="bar-label">Feb 21</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="chart-tooltip" id="chartTooltip"></div>
-                <div class="anim-cursor" id="chartCursor" style="position:absolute;left:40px;top:40px;">
-                  <svg width="13" height="17" viewBox="0 0 13 17" fill="none"><path d="M1 1v12l3-3.5L6.5 15l2-1-2.5-5.5H10L1 1z" fill="white" stroke="#aaa" stroke-width="0.8" stroke-linejoin="round"/></svg>
-                </div>
+              <div class="cap-range"><span>0</span><span>$2,000,000</span></div>
+              <div class="cap-divider"></div>
+              <div class="cap-rows">
+                <div class="cap-row"><span class="cap-dot cap-dot-gray"></span><span class="cap-label">Total Available</span><span class="cap-val">$2,000,000</span></div>
+                <div class="cap-row"><span class="cap-dot cap-dot-light"></span><span class="cap-label">Already Taken</span><span class="cap-val">$0</span></div>
+                <div class="cap-row cap-row-bold"><span class="cap-dot cap-dot-blue"></span><span class="cap-label">Available Today</span><span class="cap-val">$2,000,000</span></div>
               </div>
             </div>
-            <div class="product-visual-gradient-r"></div>
           </div>
-          <div class="product-info">
-            <p class="product-name">SaaS Line of Credit</p>
-            <p class="product-desc">Flexible revolving credit for SaaS businesses that need ongoing access to capital as they grow</p>
-          </div>
-        </a>
-
+          <div class="product-visual-gradient-b"></div>
+        </div>
       </div>
+
+      <!-- Row 2: Term Loans -->
+      <div class="product-row scroll-reveal">
+        <div class="product-row-text">
+          <h2 class="product-row-heading">Term Loans</h2>
+          <p class="product-row-desc">For mature software companies with $3m+ in annual revenues looking for interest only periods, no warrants, and 4 year paybacks</p>
+          <a href="#" class="btn-learn-more">Learn more about Term Loans</a>
+        </div>
+        <div class="product-row-visual">
+          <div class="pv-widget pv-timeline">
+            <div class="tl-card" id="tlCard">
+              <div class="tl-head">
+                <span>Task</span><span>Key Activities</span><span>Timeline</span>
+              </div>
+              <div class="tl-row" data-badge="2d">
+                <div class="tl-row-task">Discuss Terms</div>
+                <div class="tl-activities">
+                  <div class="tl-check"><div class="tl-cb"></div><span>Call to discuss terms</span></div>
+                  <div class="tl-check"><div class="tl-cb"></div><span>Indicative terms via email</span></div>
+                </div>
+                <div class="tl-time"><span class="tl-badge">2d</span></div>
+              </div>
+              <div class="tl-row" data-badge="1 week">
+                <div class="tl-row-task">Term Sheet</div>
+                <div class="tl-activities">
+                  <div class="tl-check"><div class="tl-cb"></div><span>Circulate Term Sheet</span></div>
+                  <div class="tl-check"><div class="tl-cb"></div><span>Review and execute</span></div>
+                </div>
+                <div class="tl-time"><span class="tl-badge">1 week</span></div>
+              </div>
+              <div class="tl-row" data-badge="4d">
+                <div class="tl-row-task">Credit Review</div>
+                <div class="tl-activities">
+                  <div class="tl-check"><div class="tl-cb"></div><span>Respond to Credit Committee</span></div>
+                  <div class="tl-check"><div class="tl-cb"></div><span>Complete diligence items</span></div>
+                </div>
+                <div class="tl-time"><span class="tl-badge">4d</span></div>
+              </div>
+              <div class="tl-row" data-badge="2-3 wks">
+                <div class="tl-row-task">Credit Security<br>Agreement (CSA)</div>
+                <div class="tl-activities">
+                  <div class="tl-check"><div class="tl-cb"></div><span>Circulate rough draft CSA</span></div>
+                  <div class="tl-check"><div class="tl-cb"></div><span>Contract review &amp; execution</span></div>
+                </div>
+                <div class="tl-time"><span class="tl-badge">2-3 wks</span></div>
+              </div>
+              <div class="tl-row" data-badge="2d">
+                <div class="tl-row-task">Close and Wire</div>
+                <div class="tl-activities">
+                  <div class="tl-check"><div class="tl-cb"></div><span>Circulate closing docs</span></div>
+                  <div class="tl-check"><div class="tl-cb"></div><span>Release Wire</span></div>
+                </div>
+                <div class="tl-time"><span class="tl-badge">2d</span></div>
+              </div>
+              <div class="anim-cursor tl-cursor" id="tlCursor" style="left:84px;top:18px;">
+                <svg width="13" height="17" viewBox="0 0 13 17" fill="none"><path d="M1 1v12l3-3.5L6.5 15l2-1-2.5-5.5H10L1 1z" fill="white" stroke="#aaa" stroke-width="0.8" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="product-visual-gradient-r"></div>
+        </div>
+      </div>
+
+      <!-- Row 3: Merchant Cash Advance -->
+      <div class="product-row scroll-reveal">
+        <div class="product-row-text">
+          <h2 class="product-row-heading">Merchant Cash Advance</h2>
+          <p class="product-row-desc">For companies with seasonal cash flows who want to payback as a % of future monthly sales</p>
+          <a href="#" class="btn-learn-more">Learn more about Merchant Cash Advance</a>
+        </div>
+        <div class="product-row-visual">
+          <div class="pv-widget pv-chart">
+            <div class="chart-card" id="chartCard">
+              <div class="chart-header">
+                <span class="chart-title">Merchant Cash Advance</span>
+                <div class="chart-tabs">
+                  <span class="chart-tab active">Monthly</span>
+                  <span class="chart-tab">Quarterly</span>
+                </div>
+              </div>
+              <div class="chart-legend">
+                <div class="chart-legend-item"><div class="legend-dot bar-dark"></div><span>New</span></div>
+                <div class="chart-legend-item"><div class="legend-dot bar-brand"></div><span>Existing</span></div>
+                <div class="chart-legend-item"><div class="legend-dot bar-light"></div><span>Renewed</span></div>
+              </div>
+              <div class="chart-area">
+                <div class="chart-y-labels">
+                  <span>$200k</span><span>$150k</span><span>$100k</span><span>$50k</span>
+                </div>
+                <div class="chart-bars-wrap" id="chartBars">
+                  <div class="chart-bar-group" data-label="Oct 20" data-value="$182k">
+                    <div class="bar-stack"><div class="bar-seg bar-dark" style="height:18px"></div><div class="bar-seg bar-brand" style="height:28px"></div><div class="bar-seg bar-mid" style="height:22px"></div><div class="bar-seg bar-light" style="height:18px"></div></div>
+                    <span class="bar-label">Oct 20</span>
+                  </div>
+                  <div class="chart-bar-group" data-label="Nov 20" data-value="$165k">
+                    <div class="bar-stack"><div class="bar-seg bar-dark" style="height:16px"></div><div class="bar-seg bar-brand" style="height:26px"></div><div class="bar-seg bar-mid" style="height:20px"></div><div class="bar-seg bar-light" style="height:16px"></div></div>
+                    <span class="bar-label">Nov 20</span>
+                  </div>
+                  <div class="chart-bar-group" data-label="Dec 20" data-value="$178k">
+                    <div class="bar-stack"><div class="bar-seg bar-dark" style="height:17px"></div><div class="bar-seg bar-brand" style="height:27px"></div><div class="bar-seg bar-mid" style="height:21px"></div><div class="bar-seg bar-light" style="height:17px"></div></div>
+                    <span class="bar-label">Dec 20</span>
+                  </div>
+                  <div class="chart-bar-group" data-label="Jan 21" data-value="$194k">
+                    <div class="bar-stack"><div class="bar-seg bar-dark" style="height:20px"></div><div class="bar-seg bar-brand" style="height:30px"></div><div class="bar-seg bar-mid" style="height:24px"></div><div class="bar-seg bar-light" style="height:20px"></div></div>
+                    <span class="bar-label">Jan 21</span>
+                  </div>
+                  <div class="chart-bar-group" data-label="Feb 21" data-value="$210k">
+                    <div class="bar-stack"><div class="bar-seg bar-dark" style="height:22px"></div><div class="bar-seg bar-brand" style="height:34px"></div><div class="bar-seg bar-mid" style="height:26px"></div><div class="bar-seg bar-light" style="height:22px"></div></div>
+                    <span class="bar-label">Feb 21</span>
+                  </div>
+                </div>
+              </div>
+              <div class="chart-tooltip" id="chartTooltip"></div>
+              <div class="anim-cursor" id="chartCursor" style="position:absolute;left:40px;top:40px;">
+                <svg width="13" height="17" viewBox="0 0 13 17" fill="none"><path d="M1 1v12l3-3.5L6.5 15l2-1-2.5-5.5H10L1 1z" fill="white" stroke="#aaa" stroke-width="0.8" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="product-visual-gradient-r"></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1333,6 +1358,21 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeVideoModal();
     });
+
+    // ── Scroll reveal ──────────────────────────────────────────
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
   </script>
 </body>
 </html>
