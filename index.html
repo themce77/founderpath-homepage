@@ -1342,6 +1342,120 @@
     }
     .review-verify:hover { text-decoration: underline; }
 
+    /* ─── Financing Quiz ────────────────────────────────────── */
+    .quiz-section {
+      background: var(--bg-subtle);
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .quiz-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 64px;
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.06);
+    }
+    .quiz-header { display: flex; flex-direction: column; gap: 12px; }
+    .quiz-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .quiz-title {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: #111;
+      line-height: 36px;
+    }
+    .quiz-sub {
+      font-size: 16px;
+      color: #515765;
+      line-height: 24px;
+    }
+    .quiz-progress {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .quiz-progress-bar {
+      flex: 1;
+      height: 4px;
+      background: #EBEBEB;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--brand);
+      border-radius: 100px;
+      transition: width 0.4s ease;
+    }
+    .quiz-progress-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #515765;
+      white-space: nowrap;
+    }
+    .quiz-question {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #111;
+      line-height: 28px;
+      margin-bottom: 4px;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-option {
+      padding: 14px 20px;
+      border: 1.5px solid #EBEBEB;
+      border-radius: 12px;
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #111;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .quiz-option:hover { border-color: var(--brand); background: rgba(68,61,216,0.04); }
+    .quiz-option.selected { border-color: var(--brand); background: rgba(68,61,216,0.06); font-weight: 500; }
+    .quiz-result { display: flex; flex-direction: column; gap: 12px; }
+    .quiz-result-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .quiz-result-product {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: #111;
+      line-height: 36px;
+    }
+    .quiz-result-desc {
+      font-size: 16px;
+      color: #515765;
+      line-height: 24px;
+    }
+    .quiz-result-actions { display: flex; gap: 12px; margin-top: 8px; }
+    .quiz-restart { cursor: pointer; }
+
     /* ─── Announcement bar ──────────────────────────────────── */
     .announce-bar {
       background: #111111;
@@ -2150,6 +2264,70 @@
     </div>
   </section>
 
+  <!-- ─── Financing Quiz ──────────────────────────────────── -->
+  <section class="quiz-section">
+    <div class="page-wrap">
+      <div class="quiz-card scroll-reveal">
+
+        <div class="quiz-header">
+          <p class="quiz-eyebrow">FIND YOUR BEST FINANCING OPTION</p>
+          <h2 class="quiz-title">What type of financing is right for your business?</h2>
+          <p class="quiz-sub">Answer 3 quick questions to see your options.</p>
+          <div class="quiz-progress">
+            <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizFill" style="width:33%"></div></div>
+            <span class="quiz-progress-label"><span id="quizStep">1</span> / 3</span>
+          </div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="quiz-step" id="qStep1">
+          <p class="quiz-question">What is your company's Annual Recurring Revenue (ARR)?</p>
+          <div class="quiz-options" id="qOptions1">
+            <button class="quiz-option" data-step="1" data-val="pre">Pre-revenue</button>
+            <button class="quiz-option" data-step="1" data-val="0-1m">$0 – $1M</button>
+            <button class="quiz-option" data-step="1" data-val="1-5m">$1M – $5M</button>
+            <button class="quiz-option" data-step="1" data-val="5-10m">$5M – $10M</button>
+            <button class="quiz-option" data-step="1" data-val="10m+">$10M+</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="quiz-step" id="qStep2" style="display:none">
+          <p class="quiz-question">What do you plan to use the capital for?</p>
+          <div class="quiz-options" id="qOptions2">
+            <button class="quiz-option" data-step="2" data-val="growth">Sales &amp; marketing growth</button>
+            <button class="quiz-option" data-step="2" data-val="hiring">Hiring &amp; team expansion</button>
+            <button class="quiz-option" data-step="2" data-val="product">Product development</button>
+            <button class="quiz-option" data-step="2" data-val="cashflow">Cash flow / runway</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="quiz-step" id="qStep3" style="display:none">
+          <p class="quiz-question">How quickly do you need the capital?</p>
+          <div class="quiz-options" id="qOptions3">
+            <button class="quiz-option" data-step="3" data-val="now">Within 24–72 hours</button>
+            <button class="quiz-option" data-step="3" data-val="week">Within a week</button>
+            <button class="quiz-option" data-step="3" data-val="month">Within a month</button>
+            <button class="quiz-option" data-step="3" data-val="flexible">Flexible timeline</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="quiz-result" id="qResult" style="display:none">
+          <p class="quiz-result-label">Best match for your profile</p>
+          <p class="quiz-result-product" id="qResultProduct">Revenue Financing</p>
+          <p class="quiz-result-desc" id="qResultDesc">Get capital based on your MRR — no equity, no board seats. Offers from $10K–$10M.</p>
+          <div class="quiz-result-actions">
+            <a href="#" class="btn btn-primary" style="text-decoration:none;">Get my offer</a>
+            <button class="quiz-restart btn btn-secondary">Start over</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ─── Trusted ───────────────────────────────────────────── -->
   <section class="trusted-section">
     <div class="page-wrap">
@@ -2766,6 +2944,52 @@
     }
     initCarousel('communityTrack', 'commPrev', 'commNext');
     initCarousel('reviewsTrack', 'reviewsPrev', 'reviewsNext');
+
+    // ── Financing Quiz ─────────────────────────────────────────
+    (function() {
+      var step = 1;
+      var answers = {};
+      var products = {
+        'pre':    ['Revenue Financing', 'Get capital based on your MRR — no equity, no board seats. Offers from $10K–$10M.'],
+        '0-1m':   ['Revenue Financing', 'Perfect for growing SaaS companies. Get capital based on your MRR in 24–72 hours.'],
+        '1-5m':   ['Revenue Financing', 'Ideal for $1M–$5M ARR companies. Offers up to 3× MRR, repaid as % of monthly revenue.'],
+        '5-10m':  ['Term Loan', 'For mature software companies — larger amounts, longer terms, still no equity.'],
+        '10m+':   ['Term Loan', 'Structured term loans up to $10M for high-growth companies with $3M+ ARR.'],
+      };
+      function setStep(n) {
+        step = n;
+        document.getElementById('qStep1').style.display = n === 1 ? '' : 'none';
+        document.getElementById('qStep2').style.display = n === 2 ? '' : 'none';
+        document.getElementById('qStep3').style.display = n === 3 ? '' : 'none';
+        document.getElementById('qResult').style.display = n === 4 ? '' : 'none';
+        var pct = n <= 3 ? (n / 3 * 100) : 100;
+        document.getElementById('quizFill').style.width = pct + '%';
+        document.getElementById('quizStep').textContent = Math.min(n, 3);
+      }
+      document.querySelectorAll('.quiz-option').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var s = +this.dataset.step;
+          answers[s] = this.dataset.val;
+          // highlight selection briefly then advance
+          this.classList.add('selected');
+          setTimeout(function() {
+            if (s < 3) {
+              setStep(s + 1);
+            } else {
+              var p = products[answers[1]] || ['Revenue Financing', 'Non-dilutive capital for SaaS founders.'];
+              document.getElementById('qResultProduct').textContent = p[0];
+              document.getElementById('qResultDesc').textContent = p[1];
+              setStep(4);
+            }
+          }, 300);
+        });
+      });
+      document.querySelector('.quiz-restart').addEventListener('click', function() {
+        answers = {};
+        document.querySelectorAll('.quiz-option').forEach(function(b){ b.classList.remove('selected'); });
+        setStep(1);
+      });
+    })();
 
     // ── FAQ accordion ─────────────────────────────────────────
     (function() {
