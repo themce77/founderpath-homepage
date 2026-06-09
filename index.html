@@ -675,90 +675,136 @@
 
     /* ─── Stats ──────────────────────────────────────────────── */
     .stats-section {
-      padding-top: 0;
+      background: #fff;
+      padding-top: 80px;
       padding-bottom: 80px;
     }
-    .stats-header {
-      margin-bottom: 48px;
+    .stats-inner {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
+    .stats-copy {
+      flex: 0 0 397px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
     .stats-month {
       font-family: 'Founders Grotesk', sans-serif;
       font-size: 24px;
-      font-weight: 600;
-      color: var(--text-secondary);
+      font-weight: 500;
+      color: #515765;
       line-height: 24px;
-      margin-bottom: 24px;
     }
     .stats-title {
       font-family: 'Founders Grotesk', sans-serif;
       font-size: 40px;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.1;
+      font-weight: 500;
+      color: #111111;
+      line-height: 40px;
     }
     .stats-tiles {
+      flex: 1;
       display: flex;
       gap: 16px;
-      margin-bottom: 16px;
     }
     .stat-tile {
-      flex: 1;
-      min-width: 0;
-      background: var(--bg-subtle);
-      border-radius: var(--radius-lg);
-      padding: 32px;
+      flex: 1 0 0;
+      height: 200px;
+      background: #fff;
+      border: 1px solid #EBEBEB;
+      border-radius: 20px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      justify-content: flex-end;
+      gap: 8px;
     }
     .stat-number {
-      font-family: 'Founders Grotesk', sans-serif;
-      font-size: 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
       font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.1;
+      color: #111111;
+      line-height: 1;
     }
     .stat-label {
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
-      color: var(--text-secondary);
+      font-weight: 400;
+      color: #515765;
       line-height: 24px;
       letter-spacing: 0.16px;
     }
-    .testimonials-grid {
+
+    /* play button inside testimonial thumbs — centered */
+    .testimonial-thumb .play-btn {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* ─── Testimonials ────────────────────────────────────────── */
+    .testimonials-section {
+      background: #fff;
+      padding-top: 0;
+      padding-bottom: 80px;
+    }
+    .testimonials-rows {
       display: flex;
-      gap: 16px;
+      flex-direction: column;
+      gap: 80px;
+    }
+    .testimonials-row {
+      display: flex;
+      gap: 48px;
     }
     .testimonial-card {
-      flex: 1;
+      flex: 1 0 0;
       background: #fff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
+      border-radius: 20px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      padding: 16px;
     }
     .testimonial-thumb {
-      border-radius: 12px;
       height: 188px;
       width: 100%;
       position: relative;
       overflow: hidden;
       cursor: pointer;
       flex-shrink: 0;
+      background: #000;
+      border-radius: 20px;
     }
+    .testimonial-thumb video,
     .testimonial-thumb img {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
     }
-    .testimonial-thumb::after {
-      content: '';
+    .testimonial-logo-chip {
       position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.18);
-      pointer-events: none;
+      left: 4px;
+      top: 133px;
+      width: 144px;
+      height: 51px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .testimonial-logo-chip img {
+      width: auto;
+      height: auto;
+      max-width: 110px;
+      max-height: 37px;
+      object-fit: contain;
+      display: block;
     }
     .testimonial-body {
       padding: 12px;
@@ -766,23 +812,27 @@
       flex-direction: column;
       gap: 16px;
     }
-    .testimonial-company { height: 34px; display: flex; align-items: center; }
-    .testimonial-company img { height: 28px; width: auto; max-width: 120px; object-fit: contain; }
     .testimonial-desc {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 22px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #515765;
+      line-height: 24px;
       letter-spacing: 0.16px;
     }
     .testimonial-amount-label {
-      font-size: 14px;
-      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #515765;
       line-height: 24px;
+      letter-spacing: 0.16px;
     }
     .testimonial-amount {
+      font-family: 'Inter', sans-serif;
       font-size: 24px;
       font-weight: 700;
-      color: var(--text-primary);
+      color: #111111;
       line-height: 1;
     }
 
@@ -1731,86 +1781,215 @@
     </div>
   </section>
 
-  <!-- ─── Stats + Testimonials ───────────────────────────── -->
+  <!-- ─── Stats ────────────────────────────────────────────── -->
   <section class="stats-section">
     <div class="page-wrap">
-      <div class="stats-header scroll-reveal">
-        <p class="stats-month">June 2026</p>
-        <h2 class="stats-title">$13M new capital committed this month</h2>
+      <div class="stats-inner">
+
+        <div class="stats-copy scroll-reveal">
+          <p class="stats-month">June 2026</p>
+          <h2 class="stats-title">$13M New capital committed this month</h2>
+        </div>
+
+        <div class="stats-tiles">
+          <div class="stat-tile scroll-reveal" style="--reveal-delay:0.05s">
+            <p class="stat-number">731</p>
+            <p class="stat-label">SaaS companies funded since 2021</p>
+          </div>
+          <div class="stat-tile scroll-reveal" style="--reveal-delay:0.10s">
+            <p class="stat-number">$271M</p>
+            <p class="stat-label">deployed to founders</p>
+          </div>
+          <div class="stat-tile scroll-reveal" style="--reveal-delay:0.15s">
+            <p class="stat-number">4.9</p>
+            <p class="stat-label">Out of 5 on Trustpilot &mdash; 100+ reviews &rarr;</p>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <div class="stats-tiles">
-        <div class="stat-tile scroll-reveal" style="--reveal-delay:0s">
-          <p class="stat-number">731</p>
-          <p class="stat-label">SaaS companies funded since 2021</p>
-        </div>
-        <div class="stat-tile scroll-reveal" style="--reveal-delay:0.08s">
-          <p class="stat-number">$271M</p>
-          <p class="stat-label">deployed to founders</p>
-        </div>
-        <div class="stat-tile scroll-reveal" style="--reveal-delay:0.16s">
-          <p class="stat-number">4.9</p>
-          <p class="stat-label">Out of 5 on Trustpilot &mdash; 100+ reviews &rarr;</p>
-        </div>
-      </div>
+  <!-- ─── Testimonials ──────────────────────────────────────── -->
+  <section class="testimonials-section">
+    <div class="page-wrap">
+      <div class="testimonials-rows">
 
-      <div class="testimonials-grid">
+        <!-- Row 1 -->
+        <div class="testimonials-row scroll-reveal">
 
-        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0s">
-          <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
-            <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="Testimonial video" />
-            <button class="play-btn" aria-label="Play video" style="top:auto;bottom:16px;">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="testimonial-body">
-            <div class="testimonial-company">
-              <img src="assets/images/company-logo-1.svg" alt="Company" />
+          <div class="testimonial-card">
+            <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+              <div class="testimonial-logo-chip">
+                <img src="https://www.figma.com/api/mcp/asset/518ae202-a875-4ea5-927e-0ba4f4ccef54" alt="Badger Maps" />
+              </div>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </button>
             </div>
-            <p class="testimonial-desc">CEO Steve Benson shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
-            <div>
-              <p class="testimonial-amount-label">In the amount of</p>
-              <p class="testimonial-amount">$4,200,000</p>
+            <div class="testimonial-body">
+              <p class="testimonial-desc">CEO Steve Benson shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+              <div>
+                <p class="testimonial-amount-label">In the amount of</p>
+                <p class="testimonial-amount">$4,200,000</p>
+              </div>
             </div>
           </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+              <div class="testimonial-logo-chip">
+                <img src="https://www.figma.com/api/mcp/asset/5e89bdab-075c-47ae-9e12-f4a454e83a8e" alt="ContactMonkey" />
+              </div>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div class="testimonial-body">
+              <p class="testimonial-desc">CEO Scott Pielsticker shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+              <div>
+                <p class="testimonial-amount-label">In the amount of</p>
+                <p class="testimonial-amount">$1,000,000</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+              <div class="testimonial-logo-chip">
+                <img src="https://www.figma.com/api/mcp/asset/d322150c-2f16-440e-8085-558325e6b075" alt="MobileMonkey" />
+              </div>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div class="testimonial-body">
+              <p class="testimonial-desc">CEO Larry Kim shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+              <div>
+                <p class="testimonial-amount-label">In the amount of</p>
+                <p class="testimonial-amount">$572,000</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.10s">
-          <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
-            <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="Testimonial video" />
-            <button class="play-btn" aria-label="Play video" style="top:auto;bottom:16px;">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="testimonial-body">
-            <div class="testimonial-company">
-              <img src="assets/images/company-logo-2.svg" alt="Company" />
+        <!-- Row 2 -->
+        <div class="testimonials-row scroll-reveal" style="--reveal-delay:0.05s">
+
+          <div class="testimonial-card">
+            <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+              <div class="testimonial-logo-chip">
+                <img src="https://www.figma.com/api/mcp/asset/518ae202-a875-4ea5-927e-0ba4f4ccef54" alt="Badger Maps" />
+              </div>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </button>
             </div>
-            <p class="testimonial-desc">CEO Scott Pielsticker shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
-            <div>
-              <p class="testimonial-amount-label">In the amount of</p>
-              <p class="testimonial-amount">$1,000,000</p>
+            <div class="testimonial-body">
+              <p class="testimonial-desc">CEO Steve Benson shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+              <div>
+                <p class="testimonial-amount-label">In the amount of</p>
+                <p class="testimonial-amount">$4,200,000</p>
+              </div>
             </div>
           </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+              <div class="testimonial-logo-chip">
+                <img src="https://www.figma.com/api/mcp/asset/5e89bdab-075c-47ae-9e12-f4a454e83a8e" alt="ContactMonkey" />
+              </div>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div class="testimonial-body">
+              <p class="testimonial-desc">CEO Scott Pielsticker shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+              <div>
+                <p class="testimonial-amount-label">In the amount of</p>
+                <p class="testimonial-amount">$1,000,000</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+              <div class="testimonial-logo-chip">
+                <img src="https://www.figma.com/api/mcp/asset/d322150c-2f16-440e-8085-558325e6b075" alt="MobileMonkey" />
+              </div>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div class="testimonial-body">
+              <p class="testimonial-desc">CEO Larry Kim shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+              <div>
+                <p class="testimonial-amount-label">In the amount of</p>
+                <p class="testimonial-amount">$572,000</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.20s">
-          <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
-            <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="Testimonial video" />
-            <button class="play-btn" aria-label="Play video" style="top:auto;bottom:16px;">
-              <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="testimonial-body">
-            <div class="testimonial-company">
-              <img src="assets/images/company-logo-3.svg" alt="Company" />
+        <!-- Row 3 -->
+        <div class="testimonials-row scroll-reveal" style="--reveal-delay:0.10s">
+
+          <div class="testimonial-card">
+            <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+              <div class="testimonial-logo-chip">
+                <img src="https://www.figma.com/api/mcp/asset/518ae202-a875-4ea5-927e-0ba4f4ccef54" alt="Badger Maps" />
+              </div>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </button>
             </div>
-            <p class="testimonial-desc">CEO Larry Kim shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
-            <div>
-              <p class="testimonial-amount-label">In the amount of</p>
-              <p class="testimonial-amount">$2,800,000</p>
+            <div class="testimonial-body">
+              <p class="testimonial-desc">CEO Steve Benson shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+              <div>
+                <p class="testimonial-amount-label">In the amount of</p>
+                <p class="testimonial-amount">$4,200,000</p>
+              </div>
             </div>
           </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+              <div class="testimonial-logo-chip">
+                <img src="https://www.figma.com/api/mcp/asset/5e89bdab-075c-47ae-9e12-f4a454e83a8e" alt="ContactMonkey" />
+              </div>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div class="testimonial-body">
+              <p class="testimonial-desc">CEO Scott Pielsticker shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+              <div>
+                <p class="testimonial-amount-label">In the amount of</p>
+                <p class="testimonial-amount">$1,000,000</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+              <div class="testimonial-logo-chip">
+                <img src="https://www.figma.com/api/mcp/asset/d322150c-2f16-440e-8085-558325e6b075" alt="MobileMonkey" />
+              </div>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div class="testimonial-body">
+              <p class="testimonial-desc">CEO Larry Kim shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+              <div>
+                <p class="testimonial-amount-label">In the amount of</p>
+                <p class="testimonial-amount">$572,000</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
