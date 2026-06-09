@@ -39,7 +39,7 @@
       --bg-subtle: #eeeff0;
       --border: #e0e6ef;
       --border-subtle: rgba(0,0,0,0.08);
-      --radius-sm: 6px;
+      --radius-sm: 100px;
       --radius-md: 16px;
       --radius-lg: 20px;
       --max-w: 1200px;
@@ -563,7 +563,13 @@
       display: flex;
       flex-direction: column;
       gap: 32px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease;
     }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-card:hover .product-visual { box-shadow: 0 12px 32px rgba(68,61,216,0.12); }
     .product-visual {
       background: var(--bg-subtle);
       border-radius: var(--radius-lg);
@@ -981,7 +987,7 @@
       <div class="products-grid">
 
         <!-- Card 1: Revenue Financing — animated slider -->
-        <div class="product-card">
+        <a href="#" class="product-card">
           <div class="product-visual">
             <div class="pv-widget pv-capital">
               <div class="cap-card">
@@ -1011,10 +1017,10 @@
             <p class="product-name">Revenue Financing</p>
             <p class="product-desc">For software companies with $1–3m in annual revenue looking for capital in 24 hours</p>
           </div>
-        </div>
+        </a>
 
         <!-- Card 2: Term Loans — animated table rows -->
-        <div class="product-card">
+        <a href="#" class="product-card">
           <div class="product-visual">
             <div class="pv-widget pv-timeline">
               <div class="tl-card" id="tlCard">
@@ -1072,10 +1078,10 @@
             <p class="product-name">Term Loans</p>
             <p class="product-desc">For mature software companies with $3m+ in annual revenues looking for interest only periods, no warrants, and 4 year paybacks</p>
           </div>
-        </div>
+        </a>
 
         <!-- Card 3: SaaS Line of Credit — animated bar chart -->
-        <div class="product-card">
+        <a href="#" class="product-card">
           <div class="product-visual">
             <div class="pv-widget pv-chart">
               <div class="chart-card" id="chartCard">
@@ -1130,6 +1136,45 @@
             <p class="product-name">SaaS Line of Credit</p>
             <p class="product-desc">Flexible revolving credit for SaaS businesses that need ongoing access to capital as they grow</p>
           </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How it works ───────────────────────────────────── -->
+  <section class="how-section">
+    <div class="page-wrap">
+      <div class="how-inner">
+
+        <div class="how-left">
+          <h2 class="section-heading" style="margin-bottom:0;">Three steps to apply and get capital</h2>
+
+          <div class="how-steps">
+            <div class="how-step">
+              <div class="step-number">1</div>
+              <p class="step-text">Connect tools like Stripe, QuickBooks, or your bank — or upload files if needed.</p>
+            </div>
+            <div class="how-step">
+              <div class="step-number">2</div>
+              <p class="step-text">See your offer — every number, no surprises.</p>
+            </div>
+            <div class="how-step">
+              <div class="step-number">3</div>
+              <p class="step-text">Sign and get funded. Capital lands in 24–48 hours.</p>
+            </div>
+          </div>
+
+          <div class="how-cta">
+            <div>
+              <button class="btn-outline-lg">Get your offer &rarr;</button>
+            </div>
+            <p class="how-cta-sub">Start in less than 5 minutes. Use the capital where it helps your SaaS business grow next.</p>
+          </div>
+        </div>
+
+        <div class="how-right">
+          <img src="assets/images/logos.svg" alt="Trusted by leading SaaS companies" />
         </div>
 
       </div>
@@ -1201,45 +1246,6 @@
               <p class="testimonial-amount">$2,800,000</p>
             </div>
           </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── How it works ───────────────────────────────────── -->
-  <section class="how-section">
-    <div class="page-wrap">
-      <div class="how-inner">
-
-        <div class="how-left">
-          <h2 class="section-heading" style="margin-bottom:0;">How to get funded in 24 hours</h2>
-
-          <div class="how-steps">
-            <div class="how-step">
-              <div class="step-number">1</div>
-              <p class="step-text">Connect your billing and banking data. It takes less than 5 minutes.</p>
-            </div>
-            <div class="how-step">
-              <div class="step-number">2</div>
-              <p class="step-text">See your offer — every number, no surprises.</p>
-            </div>
-            <div class="how-step">
-              <div class="step-number">3</div>
-              <p class="step-text">Sign and get funded. Capital lands in 24–48 hours.</p>
-            </div>
-          </div>
-
-          <div class="how-cta">
-            <div>
-              <button class="btn-outline-lg">Get your offer &rarr;</button>
-            </div>
-            <p class="how-cta-sub">Start in less than 5 minutes. Use the capital where it helps your SaaS business grow next.</p>
-          </div>
-        </div>
-
-        <div class="how-right">
-          <img src="assets/images/logos.svg" alt="Trusted by leading SaaS companies" />
         </div>
 
       </div>
