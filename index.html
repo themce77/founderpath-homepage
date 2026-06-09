@@ -373,6 +373,155 @@
       font-size: 16px;
     }
 
+    /* ─── Product card animations ──────────────────────────── */
+    .pv-widget {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* shared cursor */
+    .anim-cursor {
+      position: absolute;
+      pointer-events: none;
+      z-index: 20;
+      transition: left 0.55s cubic-bezier(.4,0,.2,1), top 0.55s cubic-bezier(.4,0,.2,1);
+    }
+    .anim-cursor svg { display: block; }
+
+    /* ── Card 1: Capital Offer ── */
+    .cap-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px 22px 14px;
+      width: 208px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .cap-title { font-size: 9px; font-weight: 700; text-align: center; color: #111; margin-bottom: 4px; letter-spacing: 0.03em; }
+    .cap-amount { font-size: 19px; font-weight: 800; text-align: center; color: #111; margin-bottom: 14px; font-family: 'Inter', sans-serif; }
+    .cap-slider-wrap { position: relative; padding-bottom: 18px; }
+    .cap-track { height: 3px; background: #cfd4df; border-radius: 3px; position: relative; }
+    .cap-fill {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      background: #443dd8; border-radius: 3px;
+      animation: capFill 5s ease-in-out infinite;
+    }
+    .cap-thumb {
+      position: absolute; top: 50%;
+      transform: translate(-50%,-50%);
+      width: 10px; height: 10px;
+      background: #443dd8; border: 2px solid white; border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(68,61,216,.4);
+      animation: capThumb 5s ease-in-out infinite;
+    }
+    @keyframes capFill  { 0%,10%{width:5%} 45%,55%{width:58%} 90%,100%{width:5%} }
+    @keyframes capThumb { 0%,10%{left:5%}  45%,55%{left:58%}  90%,100%{left:5%}  }
+    /* cursor rides above slider thumb */
+    .cap-cursor {
+      position: absolute; top: -18px;
+      animation: capCursorX 5s ease-in-out infinite;
+    }
+    @keyframes capCursorX { 0%,10%{left:calc(5% - 7px)} 45%,55%{left:calc(58% - 7px)} 90%,100%{left:calc(5% - 7px)} }
+    .cap-range { display:flex; justify-content:space-between; font-size:7.5px; color:#707789; margin-top:-12px; }
+    .cap-divider { height:1px; background:#e6e9f0; margin:10px 0 6px; }
+    .cap-row { display:flex; align-items:center; gap:6px; padding:5px 0; border-top:1px solid #f0f2f8; font-size:8px; color:#616879; }
+    .cap-row:first-child { border-top:none; }
+    .cap-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+    .cap-dot-gray  { background:#cfd4df; }
+    .cap-dot-light { border:1.5px solid #cfd4df; background:white; }
+    .cap-dot-blue  { background:#443dd8; }
+    .cap-val { margin-left:auto; font-size:8px; font-weight:600; color:#111; }
+    .cap-row-bold .cap-label { font-weight:600; color:#111; }
+
+    /* ── Card 2: Timeline Table ── */
+    .tl-card {
+      background: white;
+      border-radius: 10px;
+      width: 284px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+      position: relative;
+    }
+    .tl-head {
+      display: grid; grid-template-columns: 86px 1fr 66px;
+      border-bottom: 1.5px solid #e6e9f0; padding: 6px 8px;
+    }
+    .tl-head span { font-size: 7px; font-weight: 700; color: #111; }
+    .tl-row {
+      display: grid; grid-template-columns: 86px 1fr 66px;
+      border-bottom: 1px solid #f0f2f8; padding: 7px 8px;
+      min-height: 40px; align-items: start;
+      transition: background 0.25s;
+    }
+    .tl-row.tl-active { background: #f0f2ff; }
+    .tl-row-task { font-size: 8px; font-weight: 700; color: #111; padding-top: 1px; line-height: 1.35; }
+    .tl-activities { display:flex; flex-direction:column; gap:4px; }
+    .tl-check { display:flex; align-items:center; gap:4px; font-size:7px; color:#616879; }
+    .tl-cb {
+      width:8px; height:8px; border:1px solid #cfd4df; border-radius:1.5px;
+      position:relative; flex-shrink:0; transition:background .2s, border-color .2s;
+    }
+    .tl-row.tl-active .tl-cb { background:#443dd8; border-color:#443dd8; }
+    .tl-row.tl-active .tl-cb::after {
+      content:''; position:absolute; left:1px; top:0px;
+      width:4px; height:2.5px;
+      border-left:1.5px solid white; border-bottom:1.5px solid white;
+      transform:rotate(-45deg) translate(0,1px);
+    }
+    .tl-badge { display:inline-block; background:#443dd8; color:white; font-size:6px; padding:2px 5px; border-radius:20px; font-weight:600; white-space:nowrap; }
+    .tl-time { display:flex; align-items:flex-start; padding-top:2px; }
+
+    /* ── Card 3: Bar Chart ── */
+    .chart-card {
+      background: white;
+      border-radius: 10px;
+      padding: 14px 16px 10px;
+      width: 284px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .chart-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+    .chart-title { font-size:9px; font-weight:700; color:#111; }
+    .chart-tabs { display:flex; gap:2px; }
+    .chart-tab { font-size:7px; color:#838792; padding:2px 6px; border-radius:4px; cursor:pointer; }
+    .chart-tab.active { color:#111; background:#f0f2f8; font-weight:600; }
+    .chart-legend { display:flex; gap:10px; margin-bottom:8px; }
+    .chart-legend-item { display:flex; align-items:center; gap:3px; font-size:6.5px; color:#838792; }
+    .legend-dot { width:6px; height:6px; border-radius:1px; }
+    .chart-area { display:flex; align-items:flex-end; height:112px; position:relative; padding-left:26px; }
+    .chart-y-labels { position:absolute; left:0; top:0; bottom:18px; display:flex; flex-direction:column; justify-content:space-between; }
+    .chart-y-labels span { font-size:6px; color:#838792; display:block; line-height:1; }
+    .chart-bars-wrap { flex:1; display:flex; gap:5px; align-items:flex-end; height:100%; }
+    .chart-bar-group { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; height:100%; position:relative; }
+    .bar-stack {
+      flex:1; width:100%; display:flex; flex-direction:column; justify-content:flex-end;
+      border-radius:2px 2px 0 0; overflow:hidden;
+      transition: filter 0.2s, transform 0.2s;
+      transform-origin: bottom;
+    }
+    .bar-stack.bar-hovered { filter:brightness(1.1); transform:scaleY(1.04); }
+    .bar-seg { width:100%; }
+    .bar-dark  { background:#111; }
+    .bar-brand { background:#443dd8; }
+    .bar-mid   { background:#7b74e6; }
+    .bar-light { background:#b0aaf0; }
+    .bar-pale  { background:#d8d5f8; }
+    .bar-label { font-size:6px; color:#838792; text-align:center; white-space:nowrap; line-height:1; }
+    .chart-tooltip {
+      position:absolute; background:#111; color:white;
+      font-size:8px; font-weight:600; padding:5px 8px; border-radius:5px;
+      white-space:nowrap; pointer-events:none;
+      opacity:0; transition:opacity .2s; z-index:10;
+    }
+    .chart-tooltip.visible { opacity:1; }
+    .chart-tooltip::after {
+      content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+      border:4px solid transparent; border-top-color:#111;
+    }
+
     /* ─── Section ────────────────────────────────────────────── */
     .section {
       padding-top: 24px;
@@ -814,9 +963,31 @@
       <h2 class="section-heading">Products</h2>
       <div class="products-grid">
 
+        <!-- Card 1: Revenue Financing — animated slider -->
         <div class="product-card">
           <div class="product-visual">
-            <img src="assets/images/product-1.svg" alt="Revenue Financing" />
+            <div class="pv-widget pv-capital">
+              <div class="cap-card">
+                <p class="cap-title">Instant Capital Offer</p>
+                <p class="cap-amount">$1,000,000</p>
+                <div class="cap-slider-wrap">
+                  <div class="cap-track">
+                    <div class="cap-fill"></div>
+                    <div class="cap-thumb"></div>
+                  </div>
+                  <div class="anim-cursor cap-cursor">
+                    <svg width="13" height="17" viewBox="0 0 13 17" fill="none"><path d="M1 1v12l3-3.5L6.5 15l2-1-2.5-5.5H10L1 1z" fill="white" stroke="#aaa" stroke-width="0.8" stroke-linejoin="round"/></svg>
+                  </div>
+                </div>
+                <div class="cap-range"><span>0</span><span>$2,000,000</span></div>
+                <div class="cap-divider"></div>
+                <div class="cap-rows">
+                  <div class="cap-row"><span class="cap-dot cap-dot-gray"></span><span class="cap-label">Total Available</span><span class="cap-val">$2,000,000</span></div>
+                  <div class="cap-row"><span class="cap-dot cap-dot-light"></span><span class="cap-label">Already Taken</span><span class="cap-val">$0</span></div>
+                  <div class="cap-row cap-row-bold"><span class="cap-dot cap-dot-blue"></span><span class="cap-label">Available Today</span><span class="cap-val">$2,000,000</span></div>
+                </div>
+              </div>
+            </div>
             <div class="product-visual-gradient-b"></div>
           </div>
           <div class="product-info">
@@ -825,9 +996,59 @@
           </div>
         </div>
 
+        <!-- Card 2: Term Loans — animated table rows -->
         <div class="product-card">
           <div class="product-visual">
-            <img src="assets/images/product-2.svg" alt="Term Loans" />
+            <div class="pv-widget pv-timeline">
+              <div class="tl-card" id="tlCard">
+                <div class="tl-head">
+                  <span>Task</span><span>Key Activities</span><span>Timeline</span>
+                </div>
+                <div class="tl-row" data-badge="2d">
+                  <div class="tl-row-task">Discuss Terms</div>
+                  <div class="tl-activities">
+                    <div class="tl-check"><div class="tl-cb"></div><span>Call to discuss terms</span></div>
+                    <div class="tl-check"><div class="tl-cb"></div><span>Indicative terms via email</span></div>
+                  </div>
+                  <div class="tl-time"><span class="tl-badge">2d</span></div>
+                </div>
+                <div class="tl-row" data-badge="1 week">
+                  <div class="tl-row-task">Term Sheet</div>
+                  <div class="tl-activities">
+                    <div class="tl-check"><div class="tl-cb"></div><span>Circulate Term Sheet</span></div>
+                    <div class="tl-check"><div class="tl-cb"></div><span>Review and execute</span></div>
+                  </div>
+                  <div class="tl-time"><span class="tl-badge">1 week</span></div>
+                </div>
+                <div class="tl-row" data-badge="4d">
+                  <div class="tl-row-task">Credit Review</div>
+                  <div class="tl-activities">
+                    <div class="tl-check"><div class="tl-cb"></div><span>Respond to Credit Committee</span></div>
+                    <div class="tl-check"><div class="tl-cb"></div><span>Complete diligence items</span></div>
+                  </div>
+                  <div class="tl-time"><span class="tl-badge">4d</span></div>
+                </div>
+                <div class="tl-row" data-badge="2-3 wks">
+                  <div class="tl-row-task">Credit Security<br>Agreement (CSA)</div>
+                  <div class="tl-activities">
+                    <div class="tl-check"><div class="tl-cb"></div><span>Circulate rough draft CSA</span></div>
+                    <div class="tl-check"><div class="tl-cb"></div><span>Contract review &amp; execution</span></div>
+                  </div>
+                  <div class="tl-time"><span class="tl-badge">2-3 wks</span></div>
+                </div>
+                <div class="tl-row" data-badge="2d">
+                  <div class="tl-row-task">Close and Wire</div>
+                  <div class="tl-activities">
+                    <div class="tl-check"><div class="tl-cb"></div><span>Circulate closing docs</span></div>
+                    <div class="tl-check"><div class="tl-cb"></div><span>Release Wire</span></div>
+                  </div>
+                  <div class="tl-time"><span class="tl-badge">2d</span></div>
+                </div>
+                <div class="anim-cursor tl-cursor" id="tlCursor" style="left:84px;top:18px;">
+                  <svg width="13" height="17" viewBox="0 0 13 17" fill="none"><path d="M1 1v12l3-3.5L6.5 15l2-1-2.5-5.5H10L1 1z" fill="white" stroke="#aaa" stroke-width="0.8" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+            </div>
             <div class="product-visual-gradient-r"></div>
           </div>
           <div class="product-info">
@@ -836,9 +1057,56 @@
           </div>
         </div>
 
+        <!-- Card 3: SaaS Line of Credit — animated bar chart -->
         <div class="product-card">
           <div class="product-visual">
-            <img src="assets/images/product-3.svg" alt="SaaS Line of Credit" />
+            <div class="pv-widget pv-chart">
+              <div class="chart-card" id="chartCard">
+                <div class="chart-header">
+                  <span class="chart-title">Merchant Cash Advance</span>
+                  <div class="chart-tabs">
+                    <span class="chart-tab active">Monthly</span>
+                    <span class="chart-tab">Quarterly</span>
+                  </div>
+                </div>
+                <div class="chart-legend">
+                  <div class="chart-legend-item"><div class="legend-dot bar-dark"></div><span>New</span></div>
+                  <div class="chart-legend-item"><div class="legend-dot bar-brand"></div><span>Existing</span></div>
+                  <div class="chart-legend-item"><div class="legend-dot bar-light"></div><span>Renewed</span></div>
+                </div>
+                <div class="chart-area">
+                  <div class="chart-y-labels">
+                    <span>$200k</span><span>$150k</span><span>$100k</span><span>$50k</span>
+                  </div>
+                  <div class="chart-bars-wrap" id="chartBars">
+                    <div class="chart-bar-group" data-label="Oct 20" data-value="$182k">
+                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:18px"></div><div class="bar-seg bar-brand" style="height:28px"></div><div class="bar-seg bar-mid" style="height:22px"></div><div class="bar-seg bar-light" style="height:18px"></div></div>
+                      <span class="bar-label">Oct 20</span>
+                    </div>
+                    <div class="chart-bar-group" data-label="Nov 20" data-value="$165k">
+                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:16px"></div><div class="bar-seg bar-brand" style="height:26px"></div><div class="bar-seg bar-mid" style="height:20px"></div><div class="bar-seg bar-light" style="height:16px"></div></div>
+                      <span class="bar-label">Nov 20</span>
+                    </div>
+                    <div class="chart-bar-group" data-label="Dec 20" data-value="$178k">
+                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:17px"></div><div class="bar-seg bar-brand" style="height:27px"></div><div class="bar-seg bar-mid" style="height:21px"></div><div class="bar-seg bar-light" style="height:17px"></div></div>
+                      <span class="bar-label">Dec 20</span>
+                    </div>
+                    <div class="chart-bar-group" data-label="Jan 21" data-value="$194k">
+                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:20px"></div><div class="bar-seg bar-brand" style="height:30px"></div><div class="bar-seg bar-mid" style="height:24px"></div><div class="bar-seg bar-light" style="height:20px"></div></div>
+                      <span class="bar-label">Jan 21</span>
+                    </div>
+                    <div class="chart-bar-group" data-label="Feb 21" data-value="$210k">
+                      <div class="bar-stack"><div class="bar-seg bar-dark" style="height:22px"></div><div class="bar-seg bar-brand" style="height:34px"></div><div class="bar-seg bar-mid" style="height:26px"></div><div class="bar-seg bar-light" style="height:22px"></div></div>
+                      <span class="bar-label">Feb 21</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="chart-tooltip" id="chartTooltip"></div>
+                <div class="anim-cursor" id="chartCursor" style="position:absolute;left:40px;top:40px;">
+                  <svg width="13" height="17" viewBox="0 0 13 17" fill="none"><path d="M1 1v12l3-3.5L6.5 15l2-1-2.5-5.5H10L1 1z" fill="white" stroke="#aaa" stroke-width="0.8" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+            </div>
             <div class="product-visual-gradient-r"></div>
           </div>
           <div class="product-info">
@@ -977,6 +1245,72 @@
   </footer>
 
   <script>
+    // ── Card 2: Table row cycling ──────────────────────────────
+    (function() {
+      const card = document.getElementById('tlCard');
+      if (!card) return;
+      const rows = card.querySelectorAll('.tl-row');
+      const cursor = document.getElementById('tlCursor');
+      let active = 0;
+
+      function activate(i) {
+        rows.forEach(r => r.classList.remove('tl-active'));
+        rows[i].classList.add('tl-active');
+        // Move cursor to the checkbox area of the active row
+        const rowTop = rows[i].offsetTop;
+        const rowH   = rows[i].offsetHeight;
+        cursor.style.top  = (rowTop + rowH / 2 - 8) + 'px';
+        cursor.style.left = '84px';
+      }
+
+      activate(0);
+      setInterval(function() {
+        active = (active + 1) % rows.length;
+        activate(active);
+      }, 1800);
+    })();
+
+    // ── Card 3: Chart bar hover cycling ───────────────────────
+    (function() {
+      const card = document.getElementById('chartCard');
+      if (!card) return;
+      const groups   = card.querySelectorAll('.chart-bar-group');
+      const tooltip  = document.getElementById('chartTooltip');
+      const cursor   = document.getElementById('chartCursor');
+      let active = 0;
+
+      function hoverBar(i) {
+        groups.forEach(g => g.querySelector('.bar-stack').classList.remove('bar-hovered'));
+        const grp   = groups[i];
+        const stack = grp.querySelector('.bar-stack');
+        stack.classList.add('bar-hovered');
+
+        // Tooltip content
+        tooltip.innerHTML = '<strong>' + grp.dataset.value + '</strong><br><span style="font-weight:400;font-size:7px;opacity:.7">' + grp.dataset.label + '</span>';
+
+        // Position tooltip above the bar group, relative to chart-card
+        const cardRect  = card.getBoundingClientRect();
+        const grpRect   = grp.getBoundingClientRect();
+        const ttLeft    = grpRect.left - cardRect.left + grpRect.width / 2;
+        const ttTop     = grpRect.top  - cardRect.top  - 42;
+        tooltip.style.left      = ttLeft + 'px';
+        tooltip.style.top       = ttTop  + 'px';
+        tooltip.style.transform = 'translateX(-50%)';
+        tooltip.classList.add('visible');
+
+        // Cursor just below tooltip, above bar
+        cursor.style.left = (ttLeft - 6) + 'px';
+        cursor.style.top  = (ttTop + 30) + 'px';
+      }
+
+      hoverBar(0);
+      setInterval(function() {
+        active = (active + 1) % groups.length;
+        hoverBar(active);
+      }, 2000);
+    })();
+
+    // ── Video modal ────────────────────────────────────────────
     function openVideoModal(title) {
       document.getElementById('videoModalTitle').textContent = title;
       document.getElementById('videoModal').classList.add('open');
