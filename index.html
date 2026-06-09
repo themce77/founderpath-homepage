@@ -714,10 +714,25 @@
       padding: 16px;
     }
     .testimonial-thumb {
-      background: #1a1a2e;
       border-radius: 12px;
       height: 188px;
       width: 100%;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .testimonial-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .testimonial-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.18);
+      pointer-events: none;
     }
     .testimonial-body {
       padding: 12px;
@@ -923,8 +938,8 @@
               <div class="proof-card-logo">
                 <img src="assets/images/cybersmart.svg" alt="CyberSmart" />
               </div>
-              <div class="proof-card-thumb" onclick="openVideoModal('CEO Jamie Akhtar — CyberSmart')">
-                <div style="width:100%;height:100%;background:linear-gradient(145deg,#1c2d4a 0%,#0d1b38 100%);position:absolute;inset:0;"></div>
+              <div class="proof-card-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+                <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="CyberSmart video" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" />
                 <button class="play-btn" aria-label="Play video">
                   <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
                 </button>
@@ -942,8 +957,8 @@
               <div class="proof-card-logo">
                 <img src="assets/images/cybersmart.svg" alt="CyberSmart" />
               </div>
-              <div class="proof-card-thumb" onclick="openVideoModal('CEO Jamie Akhtar — CyberSmart')">
-                <div style="width:100%;height:100%;background:linear-gradient(145deg,#1c2d4a 0%,#0d1b38 100%);position:absolute;inset:0;"></div>
+              <div class="proof-card-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+                <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="CyberSmart video" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" />
                 <button class="play-btn" aria-label="Play video">
                   <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
                 </button>
@@ -961,8 +976,8 @@
               <div class="proof-card-logo">
                 <img src="assets/images/cybersmart.svg" alt="CyberSmart" />
               </div>
-              <div class="proof-card-thumb" onclick="openVideoModal('CEO Jamie Akhtar — CyberSmart')">
-                <div style="width:100%;height:100%;background:linear-gradient(145deg,#1c2d4a 0%,#0d1b38 100%);position:absolute;inset:0;"></div>
+              <div class="proof-card-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+                <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="CyberSmart video" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" />
                 <button class="play-btn" aria-label="Play video">
                   <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
                 </button>
@@ -993,14 +1008,9 @@
         <div class="video-modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
           <div class="video-modal">
             <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
-            <div class="video-modal-placeholder">
-              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.1)"/>
-                <path d="M26 20v24l20-12z" fill="rgba(255,255,255,0.7)"/>
-              </svg>
-              <p id="videoModalTitle">Video placeholder</p>
-              <p style="color:rgba(255,255,255,0.35);font-size:13px;">Real video will be embedded here</p>
-            </div>
+            <iframe id="videoIframe" width="100%" height="100%" frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+              style="display:block;"></iframe>
           </div>
         </div>
 
@@ -1235,7 +1245,12 @@
       <div class="testimonials-grid">
 
         <div class="testimonial-card scroll-reveal" style="--reveal-delay:0s">
-          <div class="testimonial-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
+          <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+            <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="Testimonial video" />
+            <button class="play-btn" aria-label="Play video" style="top:auto;bottom:16px;">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
           <div class="testimonial-body">
             <div class="testimonial-company">
               <img src="assets/images/company-logo-1.svg" alt="Company" />
@@ -1249,7 +1264,12 @@
         </div>
 
         <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.12s">
-          <div class="testimonial-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
+          <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+            <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="Testimonial video" />
+            <button class="play-btn" aria-label="Play video" style="top:auto;bottom:16px;">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
           <div class="testimonial-body">
             <div class="testimonial-company">
               <img src="assets/images/company-logo-2.svg" alt="Company" />
@@ -1263,7 +1283,12 @@
         </div>
 
         <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.24s">
-          <div class="testimonial-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
+          <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
+            <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="Testimonial video" />
+            <button class="play-btn" aria-label="Play video" style="top:auto;bottom:16px;">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
           <div class="testimonial-body">
             <div class="testimonial-company">
               <img src="assets/images/company-logo-3.svg" alt="Company" />
@@ -1362,14 +1387,16 @@
     })();
 
     // ── Video modal ────────────────────────────────────────────
-    function openVideoModal(title) {
-      document.getElementById('videoModalTitle').textContent = title;
+    function openVideoModal(videoId) {
+      document.getElementById('videoIframe').src =
+        'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
       document.getElementById('videoModal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
     function closeVideoModal(e) {
       if (e && e.target !== document.getElementById('videoModal')) return;
       document.getElementById('videoModal').classList.remove('open');
+      document.getElementById('videoIframe').src = '';
       document.body.style.overflow = '';
     }
     document.addEventListener('keydown', function(e) {
