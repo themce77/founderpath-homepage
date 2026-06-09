@@ -197,13 +197,20 @@
     .btn-outline-lg:hover { background: var(--bg-subtle); }
 
     /* ─── Social proof cards ─────────────────────────────────── */
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     .social-proof-wrap {
-      background: var(--bg-subtle);
       border-radius: var(--radius-lg);
       padding: 4px;
       display: flex;
       flex-direction: column;
-      gap: 0;
+      overflow: hidden;
+      background: linear-gradient(120deg, #ddeafc 0%, #a8c0ef 20%, #3a5fbd 50%, #0b1e5c 75%, #050d2e 100%);
+      background-size: 300% 300%;
+      animation: gradientShift 7s ease infinite;
     }
     .social-proof-cards {
       display: flex;
@@ -213,7 +220,7 @@
       flex: 1;
       background: #fff;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
+      border-radius: calc(var(--radius-md) - 2px);
       padding: 16px;
       display: flex;
       flex-direction: column;
@@ -221,25 +228,51 @@
       overflow: hidden;
     }
     .proof-card-logo {
-      padding: 8px;
-      height: 51px;
+      padding: 4px 8px 8px;
+      height: 44px;
       display: flex;
       align-items: center;
     }
-    .proof-card-logo img { height: 20px; width: auto; }
+    .proof-card-logo img { height: 22px; width: auto; }
+
+    /* video thumbnail */
     .proof-card-thumb {
-      background: #1a1a2e;
       border-radius: 12px;
-      height: 188px;
+      height: 196px;
       width: 100%;
       overflow: hidden;
       position: relative;
+      cursor: pointer;
+      background: linear-gradient(145deg, #1a2a4a 0%, #0d1b38 100%);
     }
-    .proof-card-thumb img {
+    .proof-card-thumb-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
     }
+    .proof-card-thumb:hover .proof-card-thumb-img { transform: scale(1.03); }
+    /* play button */
+    .play-btn {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      width: 44px;
+      height: 32px;
+      background: #ff0000;
+      border: none;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      padding: 0;
+    }
+    .proof-card-thumb:hover .play-btn { background: #cc0000; transform: scale(1.08); }
+    .play-btn svg { width: 16px; height: 16px; }
+
     .proof-card-body {
       padding: 8px;
       display: flex;
@@ -263,23 +296,24 @@
       color: var(--text-primary);
       line-height: 1;
     }
+
+    /* footer bar */
     .social-proof-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 24px;
+      padding: 14px 20px;
+      margin-top: 2px;
     }
     .proof-stars {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .stars-row { display: flex; gap: 3px; }
-    .star { width: 12px; height: 12px; }
-    .star svg { width: 12px; height: 12px; }
     .proof-count {
       font-size: 14px;
-      color: var(--text-secondary);
+      color: rgba(255,255,255,0.9);
       line-height: 24px;
       letter-spacing: 0.16px;
     }
@@ -288,10 +322,56 @@
       align-items: center;
       gap: 8px;
       font-size: 14px;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.6);
       line-height: 24px;
     }
-    .proof-powered img { height: 20px; width: auto; }
+    .proof-powered img { height: 20px; width: auto; filter: brightness(0) invert(1); }
+
+    /* video modal */
+    .video-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-modal-overlay.open { display: flex; }
+    .video-modal {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .video-modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 32px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .video-modal-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: linear-gradient(145deg, #1a2a4a, #0d1b38);
+    }
+    .video-modal-placeholder p {
+      color: rgba(255,255,255,0.6);
+      font-size: 16px;
+    }
 
     /* ─── Section ────────────────────────────────────────────── */
     .section {
@@ -643,8 +723,11 @@
               <div class="proof-card-logo">
                 <img src="assets/images/cybersmart.svg" alt="CyberSmart" />
               </div>
-              <div class="proof-card-thumb">
-                <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e 0%,#2d2d5e 100%);"></div>
+              <div class="proof-card-thumb" onclick="openVideoModal('CEO Jamie Akhtar — CyberSmart')">
+                <div style="width:100%;height:100%;background:linear-gradient(145deg,#1c2d4a 0%,#0d1b38 100%);position:absolute;inset:0;"></div>
+                <button class="play-btn" aria-label="Play video">
+                  <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                </button>
               </div>
               <div class="proof-card-body">
                 <p class="proof-card-desc">CEO Jamie Akhtar shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
@@ -659,14 +742,17 @@
               <div class="proof-card-logo">
                 <img src="assets/images/company-logo-3.svg" alt="Company" />
               </div>
-              <div class="proof-card-thumb">
-                <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e 0%,#2d2d5e 100%);"></div>
+              <div class="proof-card-thumb" onclick="openVideoModal('CEO Scott Pielsticker — ContactMonkey')">
+                <div style="width:100%;height:100%;background:linear-gradient(145deg,#1c2d4a 0%,#0d1b38 100%);position:absolute;inset:0;"></div>
+                <button class="play-btn" aria-label="Play video">
+                  <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                </button>
               </div>
               <div class="proof-card-body">
-                <p class="proof-card-desc">CEO Jamie Akhtar shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+                <p class="proof-card-desc">CEO Scott Pielsticker shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
                 <div>
                   <p class="proof-card-amount-label">In the amount of</p>
-                  <p class="proof-card-amount">$1,452,000</p>
+                  <p class="proof-card-amount">$1,000,000</p>
                 </div>
               </div>
             </div>
@@ -675,14 +761,17 @@
               <div class="proof-card-logo">
                 <img src="assets/images/company-logo-2.svg" alt="Company" />
               </div>
-              <div class="proof-card-thumb">
-                <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e 0%,#2d2d5e 100%);"></div>
+              <div class="proof-card-thumb" onclick="openVideoModal('CEO Larry Kim — MobileMonkey')">
+                <div style="width:100%;height:100%;background:linear-gradient(145deg,#1c2d4a 0%,#0d1b38 100%);position:absolute;inset:0;"></div>
+                <button class="play-btn" aria-label="Play video">
+                  <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                </button>
               </div>
               <div class="proof-card-body">
-                <p class="proof-card-desc">CEO Jamie Akhtar shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+                <p class="proof-card-desc">CEO Larry Kim shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
                 <div>
                   <p class="proof-card-amount-label">In the amount of</p>
-                  <p class="proof-card-amount">$1,452,000</p>
+                  <p class="proof-card-amount">$2,800,000</p>
                 </div>
               </div>
             </div>
@@ -691,18 +780,32 @@
           <div class="social-proof-footer">
             <div class="proof-stars">
               <div class="stars-row">
-                <!-- 5 stars -->
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.236 2.506 2.764.4-2 1.95.472 2.75L6 7.25l-2.472 1.356.472-2.75-2-1.95 2.764-.4L6 1z" fill="#443dd8"/></svg>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.56 3.17L12 4.64l-2.5 2.44.59 3.44L7 8.9l-3.09 1.62.59-3.44L2 4.64l3.44-.47L7 1z" fill="#00b67a"/></svg>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.56 3.17L12 4.64l-2.5 2.44.59 3.44L7 8.9l-3.09 1.62.59-3.44L2 4.64l3.44-.47L7 1z" fill="#00b67a"/></svg>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.56 3.17L12 4.64l-2.5 2.44.59 3.44L7 8.9l-3.09 1.62.59-3.44L2 4.64l3.44-.47L7 1z" fill="#00b67a"/></svg>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.56 3.17L12 4.64l-2.5 2.44.59 3.44L7 8.9l-3.09 1.62.59-3.44L2 4.64l3.44-.47L7 1z" fill="#00b67a"/></svg>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.56 3.17L12 4.64l-2.5 2.44.59 3.44L7 8.9l-3.09 1.62.59-3.44L2 4.64l3.44-.47L7 1z" fill="#00b67a"/></svg>
               </div>
               <span class="proof-count">$220m Funded to 550 founders &rarr;</span>
             </div>
             <div class="proof-powered">
               <span>Powered by</span>
-              <img src="assets/images/logo.svg" alt="Founderpath" style="height:20px;" />
+              <img src="assets/images/logo.svg" alt="Founderpath" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Video modal -->
+        <div class="video-modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
+          <div class="video-modal">
+            <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+            <div class="video-modal-placeholder">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.1)"/>
+                <path d="M26 20v24l20-12z" fill="rgba(255,255,255,0.7)"/>
+              </svg>
+              <p id="videoModalTitle">Video placeholder</p>
+              <p style="color:rgba(255,255,255,0.35);font-size:13px;">Real video will be embedded here</p>
             </div>
           </div>
         </div>
@@ -879,5 +982,20 @@
     </div>
   </footer>
 
+  <script>
+    function openVideoModal(title) {
+      document.getElementById('videoModalTitle').textContent = title;
+      document.getElementById('videoModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeVideoModal(e) {
+      if (e && e.target !== document.getElementById('videoModal')) return;
+      document.getElementById('videoModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+  </script>
 </body>
 </html>
