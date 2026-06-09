@@ -104,9 +104,15 @@
       background: var(--brand);
       color: #fff;
       box-shadow: 0px 4px 4px var(--brand-shadow);
+      transition: background 0.15s ease, transform 0.15s ease;
     }
-    .btn-primary:hover { background: #3832b8; }
-    .btn-secondary:hover { background: var(--bg-subtle); }
+    .btn-secondary {
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .btn-primary:hover { background: #3832b8; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-secondary:hover { background: var(--bg-subtle); transform: translateY(-1px); }
+    .btn-secondary:active { transform: translateY(0); }
 
     /* ─── Hero ───────────────────────────────────────────────── */
     .hero {
@@ -174,7 +180,9 @@
       align-items: center;
       gap: 12px;
     }
-    .btn-primary-lg:hover { background: #3832b8; }
+    .btn-primary-lg { transition: background 0.15s ease, transform 0.15s ease; }
+    .btn-primary-lg:hover { background: #3832b8; transform: translateY(-1px); }
+    .btn-primary-lg:active { transform: translateY(0); }
     .btn-outline-lg {
       background: #fff;
       color: var(--text-primary);
@@ -189,7 +197,9 @@
       align-items: center;
       gap: 8px;
     }
-    .btn-outline-lg:hover { background: var(--bg-subtle); }
+    .btn-outline-lg { transition: background 0.15s ease, transform 0.15s ease; }
+    .btn-outline-lg:hover { background: var(--bg-subtle); transform: translateY(-1px); }
+    .btn-outline-lg:active { transform: translateY(0); }
 
     /* ─── Social proof cards ─────────────────────────────────── */
     @keyframes gradientShift {
@@ -539,8 +549,8 @@
       display: flex;
       align-items: center;
       gap: 80px;
-      padding-top: 64px;
-      padding-bottom: 64px;
+      padding-top: 80px;
+      padding-bottom: 80px;
       border-top: 1px solid var(--border);
     }
     .product-row:last-child { border-bottom: 1px solid var(--border); }
@@ -584,12 +594,16 @@
       flex: 1;
       background: var(--bg-subtle);
       border-radius: var(--radius-lg);
-      height: 324px;
+      height: 420px;
       overflow: hidden;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: box-shadow 0.35s ease;
+    }
+    .product-row-visual:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
     }
     .product-visual-gradient-r {
       position: absolute;
@@ -608,12 +622,24 @@
       pointer-events: none;
     }
 
+    /* ─── Hero entrance ─────────────────────────────────────── */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge    { animation: heroFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
+    .hero-headline { animation: heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
+    .hero-sub      { animation: heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.27s both; }
+    .hero-actions  { animation: heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.38s both; }
+    .social-proof-wrap { animation: heroFadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.52s both; }
+
     /* ─── Scroll reveal ──────────────────────────────────────── */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(56px);
+      transform: translateY(48px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
                   transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--reveal-delay, 0s);
     }
     .scroll-reveal.revealed {
       opacity: 1;
@@ -1153,15 +1179,15 @@
           <h2 class="section-heading" style="margin-bottom:0;">Three steps to apply and get capital</h2>
 
           <div class="how-steps">
-            <div class="how-step">
+            <div class="how-step scroll-reveal" style="--reveal-delay:0.1s">
               <div class="step-number">1</div>
               <p class="step-text">Connect tools like Stripe, QuickBooks, or your bank — or upload files if needed.</p>
             </div>
-            <div class="how-step">
+            <div class="how-step scroll-reveal" style="--reveal-delay:0.22s">
               <div class="step-number">2</div>
               <p class="step-text">See your offer — every number, no surprises.</p>
             </div>
-            <div class="how-step">
+            <div class="how-step scroll-reveal" style="--reveal-delay:0.34s">
               <div class="step-number">3</div>
               <p class="step-text">Sign and get funded. Capital lands in 24–48 hours.</p>
             </div>
@@ -1186,21 +1212,21 @@
   <!-- ─── Stats + Testimonials ───────────────────────────── -->
   <section class="stats-section">
     <div class="page-wrap">
-      <div class="stats-header">
+      <div class="stats-header scroll-reveal">
         <p class="stats-month">June 2026</p>
         <h2 class="stats-title">$13M new capital committed this month</h2>
       </div>
 
       <div class="stats-tiles">
-        <div class="stat-tile">
+        <div class="stat-tile scroll-reveal" style="--reveal-delay:0s">
           <p class="stat-number">731</p>
           <p class="stat-label">SaaS companies funded since 2021</p>
         </div>
-        <div class="stat-tile">
+        <div class="stat-tile scroll-reveal" style="--reveal-delay:0.1s">
           <p class="stat-number">$271M</p>
           <p class="stat-label">deployed to founders</p>
         </div>
-        <div class="stat-tile">
+        <div class="stat-tile scroll-reveal" style="--reveal-delay:0.2s">
           <p class="stat-number">4.9</p>
           <p class="stat-label">Out of 5 on Trustpilot &mdash; 100+ reviews &rarr;</p>
         </div>
@@ -1208,7 +1234,7 @@
 
       <div class="testimonials-grid">
 
-        <div class="testimonial-card">
+        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0s">
           <div class="testimonial-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
           <div class="testimonial-body">
             <div class="testimonial-company">
@@ -1222,7 +1248,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.12s">
           <div class="testimonial-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
           <div class="testimonial-body">
             <div class="testimonial-company">
@@ -1236,7 +1262,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.24s">
           <div class="testimonial-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);"></div>
           <div class="testimonial-body">
             <div class="testimonial-company">
