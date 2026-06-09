@@ -394,6 +394,9 @@
       align-items: center;
       justify-content: center;
     }
+    .pv-capital  .cap-card   { transform: scale(1.65); }
+    .pv-timeline .tl-card    { transform: scale(1.45); }
+    .pv-chart    .chart-card { transform: scale(1.45); }
     /* shared cursor */
     .anim-cursor {
       position: absolute;
@@ -652,14 +655,18 @@
     /* ─── Scroll reveal ──────────────────────────────────────── */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(48px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(56px);
+      transition: opacity 1.0s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 1.0s cubic-bezier(0.22, 1, 0.36, 1);
       transition-delay: var(--reveal-delay, 0s);
     }
     .scroll-reveal.revealed {
       opacity: 1;
       transform: translateY(0);
+    }
+    /* product rows get extra slowness + stagger */
+    .product-row.scroll-reveal {
+      transition-duration: 1.2s;
     }
 
     /* ─── Stats ──────────────────────────────────────────────── */
@@ -1093,7 +1100,7 @@
     <div class="page-wrap">
 
       <!-- Row 1: Revenue Financing -->
-      <div class="product-row scroll-reveal">
+      <div class="product-row scroll-reveal" style="--reveal-delay:0s">
         <div class="product-row-text">
           <h2 class="product-row-heading">Revenue Financing</h2>
           <p class="product-row-desc">For software companies with $1–3m in annual revenue looking for capital in 24 hours</p>
@@ -1127,7 +1134,7 @@
       </div>
 
       <!-- Row 2: Term Loans -->
-      <div class="product-row scroll-reveal">
+      <div class="product-row scroll-reveal" style="--reveal-delay:0.15s">
         <div class="product-row-text">
           <h2 class="product-row-heading">Term Loans</h2>
           <p class="product-row-desc">For mature software companies with $3m+ in annual revenues looking for interest only periods, no warrants, and 4 year paybacks</p>
@@ -1189,7 +1196,7 @@
       </div>
 
       <!-- Row 3: Merchant Cash Advance -->
-      <div class="product-row scroll-reveal">
+      <div class="product-row scroll-reveal" style="--reveal-delay:0.3s">
         <div class="product-row-text">
           <h2 class="product-row-heading">Merchant Cash Advance</h2>
           <p class="product-row-desc">For companies with seasonal cash flows who want to payback as a % of future monthly sales</p>
