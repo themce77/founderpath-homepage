@@ -99,6 +99,7 @@
       background: #fff;
       border: 1px solid var(--border);
       color: var(--text-primary);
+      box-shadow: inset 0px -2px 4px 0px rgba(238,242,248,0.35);
     }
     .btn-primary {
       background: var(--brand);
@@ -931,6 +932,95 @@
       width: 100%;
     }
 
+    /* ─── Community ─────────────────────────────────────────── */
+    .community-section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .community-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+    .community-header {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .community-heading {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 44px;
+      color: var(--text-primary);
+      max-width: 400px;
+    }
+    .community-body {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.16px;
+      color: var(--text-secondary);
+      max-width: 552px;
+    }
+    .community-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .community-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .comm-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .comm-img-wrap {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-subtle);
+    }
+    .comm-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .comm-card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .comm-card-title {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: 0.16px;
+      color: var(--text-primary);
+    }
+    .comm-card-desc {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      color: var(--text-secondary);
+    }
+    .comm-card-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+    .comm-card-link:hover { text-decoration: underline; }
+
     /* ─── Footer ─────────────────────────────────────────────── */
     .footer {
       border-top: 1px solid var(--border);
@@ -1448,6 +1538,68 @@
             <div>
               <p class="testimonial-amount-label">In the amount of</p>
               <p class="testimonial-amount">$2,800,000</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Community ──────────────────────────────────────── -->
+  <section class="community-section">
+    <div class="page-wrap">
+      <div class="community-inner">
+
+        <div class="community-header scroll-reveal">
+          <h2 class="community-heading">Your community,<br>not a portfolio</h2>
+          <p class="community-body">Get funded and you're in alongside 731 bootstrapped SaaS founders. Quarterly CEO retreats, invite-only dinners, and a private Slack where founders like those at BadgerMaps, Mangomint, Reply.io, Kissflow — and hundreds more — swap playbooks on hiring, pricing, and cash flow. Not pitch decks.</p>
+          <div class="community-actions">
+            <a href="#" class="btn-secondary" style="text-decoration:none;">See if you qualify</a>
+            <a href="#" class="btn-secondary" style="text-decoration:none;">Check past events</a>
+          </div>
+        </div>
+
+        <div class="community-cards">
+          <div class="comm-card scroll-reveal" style="--reveal-delay:0s">
+            <div class="comm-img-wrap">
+              <img src="https://www.figma.com/api/mcp/asset/cd4079b9-5b93-4091-ba11-a7680d896d04" alt="Mentoring From Public CEOs" />
+            </div>
+            <div class="comm-card-text">
+              <p class="comm-card-title">Mentoring From Public CEO's</p>
+              <p class="comm-card-desc">Henry Schuck (Zoominfo CEO) teaching Founderpath CEO's how he went from $5m to $500m in revenue.</p>
+              <a href="#" class="comm-card-link">Watch Recording →</a>
+            </div>
+          </div>
+
+          <div class="comm-card scroll-reveal" style="--reveal-delay:0.08s">
+            <div class="comm-img-wrap">
+              <img src="https://www.figma.com/api/mcp/asset/21941e23-6f6f-4bfc-bd30-8627550fed76" alt="Guinness Factory Dublin Dinner" />
+            </div>
+            <div class="comm-card-text">
+              <p class="comm-card-title">Guinness Factory Dublin Dinner</p>
+              <p class="comm-card-desc">1 on 1 time with Kim Lecha (Typeform CEO), Godard Abel (G2 CEO), and Greg Galant (Muck Rack CEO).</p>
+              <a href="#" class="comm-card-link">See Inside →</a>
+            </div>
+          </div>
+
+          <div class="comm-card scroll-reveal" style="--reveal-delay:0.16s">
+            <div class="comm-img-wrap">
+              <img src="https://www.figma.com/api/mcp/asset/cb236f7f-c55a-403a-b82c-631e48027893" alt="SF Founder Growth Conference" />
+            </div>
+            <div class="comm-card-text">
+              <p class="comm-card-title">SF Founder Growth Conference</p>
+              <p class="comm-card-desc">Each year, Founderpath CEO's get together to discuss tactics, share war stories, and brainstorm solutions.</p>
+            </div>
+          </div>
+
+          <div class="comm-card scroll-reveal" style="--reveal-delay:0.24s">
+            <div class="comm-img-wrap">
+              <img src="https://www.figma.com/api/mcp/asset/cb236f7f-c55a-403a-b82c-631e48027893" alt="SF Founder Growth Conference" />
+            </div>
+            <div class="comm-card-text">
+              <p class="comm-card-title">SF Founder Growth Conference</p>
+              <p class="comm-card-desc">Each year, Founderpath CEO's get together to discuss tactics, share war stories, and brainstorm solutions.</p>
             </div>
           </div>
         </div>
