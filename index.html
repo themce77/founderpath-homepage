@@ -593,6 +593,23 @@
       white-space: nowrap;
     }
     .btn-learn-more:hover { background: var(--bg-subtle); }
+    .btn-floating {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      border: none;
+      background: #fff;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0px 2px 8px rgba(0,0,0,0.08), 0px 0px 0px 1px rgba(0,0,0,0.04);
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+    .btn-floating:hover { box-shadow: 0px 4px 16px rgba(0,0,0,0.12), 0px 0px 0px 1px rgba(0,0,0,0.04); transform: translateY(-1px); }
+    .btn-floating:active { transform: translateY(0); }
     .product-row-visual {
       flex: 1;
       background: var(--bg-subtle);
@@ -1258,7 +1275,7 @@
             </div>
 
             <div class="how-cta">
-              <button class="btn btn-secondary">Get your offer &rarr;</button>
+              <button class="btn-floating">Get your offer</button>
               <p class="how-cta-sub">Start in less than 5 minutes. Use the capital where it helps your SaaS business grow next.</p>
             </div>
           </div>
