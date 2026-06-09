@@ -1342,36 +1342,190 @@
     }
     .review-verify:hover { text-decoration: underline; }
 
-    /* ─── Footer ─────────────────────────────────────────────── */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding-top: 48px;
-      padding-bottom: 48px;
-    }
-    .footer-inner {
+    /* ─── Announcement bar ──────────────────────────────────── */
+    .announce-bar {
+      background: #111111;
+      padding: 0 var(--page-px);
+      height: 40px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 24px;
+    }
+    .announce-timer {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .announce-unit {
+      background: rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 16px;
+      letter-spacing: 0.5px;
+    }
+    .announce-sep {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      line-height: 16px;
+    }
+    .announce-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      line-height: 20px;
+    }
+    .announce-text strong { color: #fff; font-weight: 600; }
+    .announce-seats {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      line-height: 20px;
+    }
+    .announce-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 4px 12px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 100px;
+      transition: background 0.15s;
+    }
+    .announce-cta:hover { background: rgba(255,255,255,0.1); }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    .footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding-top: 64px;
+      padding-bottom: 0;
+    }
+    .footer-top {
+      display: flex;
+      gap: 40px;
+      padding-bottom: 48px;
+    }
+    .footer-brand {
+      flex: 0 0 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
     .footer-logo { height: 24px; width: auto; }
-    .footer-copy {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 24px;
-    }
-    .footer-links {
+    .footer-cols {
+      flex: 1;
       display: flex;
       gap: 24px;
     }
-    .footer-link {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 24px;
+    .footer-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
-    .footer-link:hover { color: var(--text-primary); }
+    .footer-col-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #111111;
+      line-height: 20px;
+      margin-bottom: 4px;
+    }
+    .footer-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: #515765;
+      line-height: 20px;
+      text-decoration: none;
+      display: block;
+    }
+    .footer-link:hover { color: #111111; }
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #22b573;
+      background: rgba(34,181,115,0.1);
+      border-radius: 100px;
+      padding: 1px 6px;
+      line-height: 16px;
+    }
+    .footer-status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #22b573;
+      flex-shrink: 0;
+    }
+    .footer-compliance {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding-top: 4px;
+    }
+    .footer-compliance img { height: 40px; width: auto; }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-copy {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #515765;
+      line-height: 20px;
+    }
+    .footer-bottom-icons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-icon-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      color: #515765;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .footer-icon-link:hover { background: var(--bg-subtle); color: #111; }
+    .footer-icon-link img { width: 16px; height: 16px; object-fit: contain; }
+    .footer-bottom-divider {
+      width: 1px; height: 16px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
+
+  <!-- ─── Announcement bar ────────────────────────────────── -->
+  <div class="announce-bar" id="announceBar">
+    <div class="announce-timer" id="announceTimer">
+      <span class="announce-unit" id="adays">20</span><span class="announce-sep">d</span>
+      <span class="announce-unit" id="ahours">21</span><span class="announce-sep">h</span>
+      <span class="announce-unit" id="amins">11</span><span class="announce-sep">m</span>
+      <span class="announce-unit" id="asecs">36</span><span class="announce-sep">s</span>
+    </div>
+    <p class="announce-text"><strong>AI Growth Summit:</strong> 9 Tactics to Add $10m Fast</p>
+    <span class="announce-seats">121/150 seats taken</span>
+    <a href="#" class="announce-cta">Reserve your spot →</a>
+  </div>
 
   <!-- ─── Navigation ─────────────────────────────────────── -->
   <header>
@@ -2349,19 +2503,137 @@
   <!-- ─── Footer ─────────────────────────────────────────── -->
   <footer class="footer">
     <div class="page-wrap">
-      <div class="footer-inner">
-        <img src="assets/images/logo.svg" alt="Founderpath" class="footer-logo" />
-        <div class="footer-links">
-          <a href="#" class="footer-link">Privacy</a>
-          <a href="#" class="footer-link">Terms</a>
-          <a href="#" class="footer-link">Contact</a>
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <img src="assets/images/logo.svg" alt="Founderpath" class="footer-logo" />
+          <div class="footer-compliance">
+            <img src="assets/images/badge-soc2.svg" alt="SOC 2" onerror="this.style.display='none'" />
+            <img src="assets/images/badge-gdpr.svg" alt="GDPR Compliant" onerror="this.style.display='none'" />
+          </div>
         </div>
-        <p class="footer-copy">&copy; 2026 Founderpath. All rights reserved.</p>
+
+        <div class="footer-cols">
+
+          <div class="footer-col">
+            <p class="footer-col-title">Products</p>
+            <a href="#" class="footer-link">Revenue Financing</a>
+            <a href="#" class="footer-link">Term Loan</a>
+            <a href="#" class="footer-link">Line of Credit</a>
+            <a href="#" class="footer-link">Merchant Cash Advance</a>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col-title">Industries</p>
+            <a href="#" class="footer-link">Software</a>
+            <a href="#" class="footer-link">Brick &amp; Mortar</a>
+            <a href="#" class="footer-link">CPG Brands</a>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col-title">Resources</p>
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">Case Studies</a>
+            <a href="#" class="footer-link">SaaS Metrics Guide</a>
+            <a href="#" class="footer-link">Revenue Calculator</a>
+            <a href="#" class="footer-link">Capital Quiz</a>
+            <a href="#" class="footer-link">Glossary</a>
+            <a href="#" class="footer-link">Podcast</a>
+            <a href="#" class="footer-link">Newsletter</a>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col-title">Free Tools</p>
+            <a href="#" class="footer-link">MRR Calculator</a>
+            <a href="#" class="footer-link">Valuation Tool</a>
+            <a href="#" class="footer-link">SaaS Benchmarks</a>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col-title">Events</p>
+            <a href="#" class="footer-link">AI Growth Summit</a>
+            <a href="#" class="footer-link">CEO Retreats</a>
+            <a href="#" class="footer-link">Founder Dinners</a>
+            <a href="#" class="footer-link">SF Conference</a>
+            <a href="#" class="footer-link">Dublin Dinner</a>
+            <a href="#" class="footer-link">Napa Retreat</a>
+            <a href="#" class="footer-link">Past Events</a>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col-title">Company</p>
+            <a href="#" class="footer-link">About Us</a>
+            <a href="#" class="footer-link">Team</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">Press</a>
+            <a href="#" class="footer-link">Partners</a>
+            <a href="#" class="footer-link">Contact</a>
+            <a href="#" class="footer-link">Affiliates</a>
+            <span class="footer-link" style="display:flex;align-items:center;gap:6px;">Status <span class="footer-badge"><span class="footer-status-dot"></span>UP</span></span>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col-title">Compare</p>
+            <a href="#" class="footer-link">vs SVB</a>
+            <a href="#" class="footer-link">vs Lighter Capital</a>
+            <a href="#" class="footer-link">vs Capchase</a>
+            <a href="#" class="footer-link">vs SaaS Capital</a>
+            <a href="#" class="footer-link">vs Clearco</a>
+          </div>
+
+          <div class="footer-col">
+            <p class="footer-col-title">Legal</p>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Security</a>
+            <a href="#" class="footer-link">Bug Bounty</a>
+          </div>
+
+        </div>
       </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Founderpath, Inc. All rights reserved.</p>
+        <div class="footer-bottom-icons">
+          <a href="#" class="footer-icon-link" title="ChatGPT"><img src="assets/images/ai-chatgpt.svg" alt="ChatGPT" onerror="this.parentElement.style.display='none'" /></a>
+          <a href="#" class="footer-icon-link" title="Claude"><img src="assets/images/ai-claude.svg" alt="Claude" onerror="this.parentElement.style.display='none'" /></a>
+          <a href="#" class="footer-icon-link" title="Gemini"><img src="assets/images/ai-gemini.svg" alt="Gemini" onerror="this.parentElement.style.display='none'" /></a>
+          <a href="#" class="footer-icon-link" title="Grok"><img src="assets/images/ai-grok.svg" alt="Grok" onerror="this.parentElement.style.display='none'" /></a>
+          <a href="#" class="footer-icon-link" title="Perplexity"><img src="assets/images/ai-perplexity.svg" alt="Perplexity" onerror="this.parentElement.style.display='none'" /></a>
+          <div class="footer-bottom-divider"></div>
+          <a href="#" class="footer-icon-link" title="YouTube"><img src="assets/images/social-youtube.svg" alt="YouTube" onerror="this.parentElement.style.display='none'" /></a>
+          <a href="#" class="footer-icon-link" title="LinkedIn"><img src="assets/images/social-linkedin.svg" alt="LinkedIn" onerror="this.parentElement.style.display='none'" /></a>
+          <a href="#" class="footer-icon-link" title="X"><img src="assets/images/social-x.svg" alt="X" onerror="this.parentElement.style.display='none'" /></a>
+        </div>
+      </div>
+
     </div>
   </footer>
 
   <script>
+    // ── Announcement bar countdown ─────────────────────────────
+    (function() {
+      // Target: 20d from page load as placeholder (replace with actual event date)
+      var target = new Date(Date.now() + 20 * 24 * 60 * 60 * 1000);
+      function pad(n) { return String(n).padStart(2,'0'); }
+      function tick() {
+        var diff = Math.max(0, target - Date.now());
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        var el = document.getElementById('announceTimer');
+        if (el) el.innerHTML =
+          '<span class="announce-unit">'+pad(d)+'</span><span class="announce-sep">d</span> '+
+          '<span class="announce-unit">'+pad(h)+'</span><span class="announce-sep">h</span> '+
+          '<span class="announce-unit">'+pad(m)+'</span><span class="announce-sep">m</span> '+
+          '<span class="announce-unit">'+pad(s)+'</span><span class="announce-sep">s</span>';
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
     // ── Card 2: Table row cycling ──────────────────────────────
     (function() {
       const card = document.getElementById('tlCard');
