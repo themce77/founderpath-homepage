@@ -236,6 +236,12 @@
       flex-direction: column;
       gap: 8px;
       overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+    .proof-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
     }
 
     .proof-card-logo {
@@ -599,10 +605,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: box-shadow 0.35s ease;
-    }
-    .product-row-visual:hover {
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
     }
     .product-visual-gradient-r {
       position: absolute;
