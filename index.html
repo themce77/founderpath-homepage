@@ -661,56 +661,6 @@
     .hero-actions  { animation: heroBlurUp    0.8s cubic-bezier(0.22,1,0.36,1) 0.52s both; }
     .social-proof-wrap { animation: heroBlurUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.68s both, gradientShift 10s ease 1.58s infinite; }
 
-    /* ─── Product reveal animation ──────────────────────────── */
-    @keyframes productScale {
-      0%   { transform: scale(0.13); border-radius: 28px; }
-      100% { transform: scale(1);    border-radius: 14px; }
-    }
-    @keyframes productShadowPulse {
-      0%   { box-shadow: 0 0 0 80vw rgba(238,239,240,1), 0 0 80px 40px rgba(200,204,214,0.9); }
-      55%  { box-shadow: 0 0 0 0vw  rgba(238,239,240,0), 0 32px 80px rgba(0,0,0,0.14); }
-      100% { box-shadow: 0 20px 60px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.06); }
-    }
-    @keyframes grainOverlayFade {
-      0%   { opacity: 0; }
-      12%  { opacity: 1; }
-      75%  { opacity: 0.5; }
-      100% { opacity: 0; }
-    }
-    .hero-product-wrap {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 56px;
-      animation: heroBlurUp 0.5s cubic-bezier(0.22,1,0.36,1) 0.7s both;
-    }
-    .hero-product-window {
-      width: 100%;
-      max-width: 960px;
-      border-radius: 14px;
-      overflow: hidden;
-      position: relative;
-      transform-origin: center center;
-      animation:
-        productScale       1.5s cubic-bezier(0.16,1,0.3,1)  0.85s both,
-        productShadowPulse 1.5s cubic-bezier(0.16,1,0.3,1)  0.85s both;
-    }
-    .hero-product-window img {
-      width: 100%;
-      display: block;
-      border-radius: 14px;
-    }
-    /* grain overlay — SVG feTurbulence noise that fades in then out */
-    .hero-product-grain {
-      position: absolute;
-      inset: -2px;
-      border-radius: 14px;
-      pointer-events: none;
-      animation: grainOverlayFade 1.5s ease-out 0.85s both;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-      mix-blend-mode: multiply;
-    }
 
     /* ─── Scroll reveal ──────────────────────────────────────── */
     .scroll-reveal {
@@ -727,9 +677,8 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .scroll-reveal { transition: none; transform: none; }
-      .hero-badge, .hero-headline, .hero-sub, .hero-actions, .social-proof-wrap,
-      .hero-product-wrap, .hero-product-window, .hero-product-grain {
-        animation: none; opacity: 1; transform: none; box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+      .hero-badge, .hero-headline, .hero-sub, .hero-actions, .social-proof-wrap {
+        animation: none; opacity: 1; transform: none;
       }
     }
 
@@ -2019,14 +1968,6 @@
           <div class="hero-actions">
             <button class="btn-primary-lg">Request Capital</button>
             <button class="btn-outline-lg">or talk to VP of Investments</button>
-          </div>
-        </div>
-
-        <!-- Product screenshot reveal -->
-        <div class="hero-product-wrap">
-          <div class="hero-product-window">
-            <img src="assets/images/hero-product.png" alt="Founderpath platform" />
-            <div class="hero-product-grain"></div>
           </div>
         </div>
 
