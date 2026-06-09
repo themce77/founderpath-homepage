@@ -109,10 +109,10 @@
     .btn-secondary {
       transition: background 0.15s ease, transform 0.15s ease;
     }
-    .btn-primary:hover { background: #3832b8; transform: translateY(-1px); }
-    .btn-primary:active { transform: translateY(0); }
-    .btn-secondary:hover { background: var(--bg-subtle); transform: translateY(-1px); }
-    .btn-secondary:active { transform: translateY(0); }
+    .btn-primary:hover { background: #3832b8; transform: translateY(-2px); }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-secondary:hover { background: var(--bg-subtle); transform: translateY(-2px); }
+    .btn-secondary:active { transform: scale(0.97); }
 
     /* ─── Hero ───────────────────────────────────────────────── */
     .hero {
@@ -179,8 +179,8 @@
       gap: 12px;
     }
     .btn-primary-lg { transition: background 0.15s ease, transform 0.15s ease; }
-    .btn-primary-lg:hover { background: #3832b8; transform: translateY(-1px); }
-    .btn-primary-lg:active { transform: translateY(0); }
+    .btn-primary-lg:hover { background: #3832b8; transform: translateY(-2px); }
+    .btn-primary-lg:active { transform: scale(0.97); }
     .btn-outline-lg {
       background: #fff;
       color: var(--text-primary);
@@ -196,8 +196,8 @@
       gap: 8px;
     }
     .btn-outline-lg { transition: background 0.15s ease, transform 0.15s ease; }
-    .btn-outline-lg:hover { background: var(--bg-subtle); transform: translateY(-1px); }
-    .btn-outline-lg:active { transform: translateY(0); }
+    .btn-outline-lg:hover { background: var(--bg-subtle); transform: translateY(-2px); }
+    .btn-outline-lg:active { transform: scale(0.97); }
 
     /* ─── Social proof cards ─────────────────────────────────── */
     @keyframes gradientShift {
@@ -237,7 +237,7 @@
       overflow: hidden;
     }
     .proof-card-thumb img {
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
     }
     .proof-card:hover .proof-card-thumb img {
       transform: scale(1.06);
@@ -611,8 +611,8 @@
       box-shadow: 0px 2px 8px rgba(0,0,0,0.08), 0px 0px 0px 1px rgba(0,0,0,0.04);
       transition: box-shadow 0.15s ease, transform 0.15s ease;
     }
-    .btn-floating:hover { box-shadow: 0px 4px 16px rgba(0,0,0,0.12), 0px 0px 0px 1px rgba(0,0,0,0.04); transform: translateY(-1px); }
-    .btn-floating:active { transform: translateY(0); }
+    .btn-floating:hover { box-shadow: 0px 4px 16px rgba(0,0,0,0.12), 0px 0px 0px 1px rgba(0,0,0,0.04); transform: translateY(-2px); }
+    .btn-floating:active { transform: scale(0.97); }
     .product-row-visual {
       flex: 1;
       background: var(--bg-subtle);
@@ -643,30 +643,32 @@
 
     /* ─── Hero entrance ─────────────────────────────────────── */
     @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(22px); }
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .hero-badge    { animation: heroFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
-    .hero-headline { animation: heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
-    .hero-sub      { animation: heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.27s both; }
-    .hero-actions  { animation: heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.38s both; }
-    .social-proof-wrap { animation: heroFadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.52s both, gradientShift 10s ease 1.42s infinite; }
+    .hero-badge    { animation: heroFadeUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
+    .hero-headline { animation: heroFadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.13s both; }
+    .hero-sub      { animation: heroFadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
+    .hero-actions  { animation: heroFadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.31s both; }
+    .social-proof-wrap { animation: heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.42s both, gradientShift 10s ease 1.12s infinite; }
 
     /* ─── Scroll reveal ──────────────────────────────────────── */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(56px);
-      transition: opacity 1.0s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 1.0s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
       transition-delay: var(--reveal-delay, 0s);
     }
     .scroll-reveal.revealed {
       opacity: 1;
       transform: translateY(0);
     }
-    /* product rows get extra slowness + stagger */
-    .product-row.scroll-reveal {
-      transition-duration: 1.2s;
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-reveal { transition: none; transform: none; }
+      .hero-badge, .hero-headline, .hero-sub, .hero-actions, .social-proof-wrap {
+        animation: none; opacity: 1; transform: none;
+      }
     }
 
     /* ─── Stats ──────────────────────────────────────────────── */
@@ -1100,7 +1102,7 @@
     <div class="page-wrap">
 
       <!-- Row 1: Revenue Financing -->
-      <div class="product-row scroll-reveal" style="--reveal-delay:0s">
+      <div class="product-row scroll-reveal" style="--reveal-delay:0s;">
         <div class="product-row-text">
           <h2 class="product-row-heading">Revenue Financing</h2>
           <p class="product-row-desc">For software companies with $1–3m in annual revenue looking for capital in 24 hours</p>
@@ -1134,7 +1136,7 @@
       </div>
 
       <!-- Row 2: Term Loans -->
-      <div class="product-row scroll-reveal" style="--reveal-delay:0.15s">
+      <div class="product-row scroll-reveal" style="--reveal-delay:0.08s;">
         <div class="product-row-text">
           <h2 class="product-row-heading">Term Loans</h2>
           <p class="product-row-desc">For mature software companies with $3m+ in annual revenues looking for interest only periods, no warrants, and 4 year paybacks</p>
@@ -1196,7 +1198,7 @@
       </div>
 
       <!-- Row 3: Merchant Cash Advance -->
-      <div class="product-row scroll-reveal" style="--reveal-delay:0.3s">
+      <div class="product-row scroll-reveal" style="--reveal-delay:0.16s;">
         <div class="product-row-text">
           <h2 class="product-row-heading">Merchant Cash Advance</h2>
           <p class="product-row-desc">For companies with seasonal cash flows who want to payback as a % of future monthly sales</p>
@@ -1380,11 +1382,11 @@
           <p class="stat-number">731</p>
           <p class="stat-label">SaaS companies funded since 2021</p>
         </div>
-        <div class="stat-tile scroll-reveal" style="--reveal-delay:0.1s">
+        <div class="stat-tile scroll-reveal" style="--reveal-delay:0.05s">
           <p class="stat-number">$271M</p>
           <p class="stat-label">deployed to founders</p>
         </div>
-        <div class="stat-tile scroll-reveal" style="--reveal-delay:0.2s">
+        <div class="stat-tile scroll-reveal" style="--reveal-delay:0.1s">
           <p class="stat-number">4.9</p>
           <p class="stat-label">Out of 5 on Trustpilot &mdash; 100+ reviews &rarr;</p>
         </div>
@@ -1411,7 +1413,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.12s">
+        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.07s">
           <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
             <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="Testimonial video" />
             <button class="play-btn" aria-label="Play video" style="top:auto;bottom:16px;">
@@ -1430,7 +1432,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.24s">
+        <div class="testimonial-card scroll-reveal" style="--reveal-delay:0.14s">
           <div class="testimonial-thumb" onclick="openVideoModal('LnBA_jV3CBU')">
             <img src="https://img.youtube.com/vi/LnBA_jV3CBU/maxresdefault.jpg" alt="Testimonial video" />
             <button class="play-btn" aria-label="Play video" style="top:auto;bottom:16px;">
