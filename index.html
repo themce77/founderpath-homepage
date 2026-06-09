@@ -934,6 +934,7 @@
 
     /* ─── FAQ ───────────────────────────────────────────────── */
     .faq-section {
+      background: var(--bg-subtle);
       padding-top: 96px;
       padding-bottom: 96px;
     }
@@ -1008,7 +1009,7 @@
       color: var(--text-secondary);
     }
 
-    /* ─── Community ─────────────────────────────────────────── */
+    /* ─── Community carousel ────────────────────────────────── */
     .community-section {
       background: #fff;
       padding-top: 80px;
@@ -1017,7 +1018,18 @@
     .community-inner {
       display: flex;
       flex-direction: column;
-      gap: 80px;
+      gap: 56px;
+    }
+    .community-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+    .community-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
     .community-heading {
       font-family: 'Founders Grotesk', sans-serif;
@@ -1025,8 +1037,6 @@
       font-weight: 500;
       line-height: 40px;
       color: var(--text-primary);
-      max-width: 382px;
-      margin-bottom: 32px;
     }
     .community-body {
       font-size: 16px;
@@ -1035,27 +1045,30 @@
       letter-spacing: 0.16px;
       color: var(--text-secondary);
       max-width: 552px;
-      margin-bottom: 32px;
     }
     .community-actions {
       display: flex;
       gap: 16px;
       align-items: center;
+      flex-shrink: 0;
     }
-    .community-cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .community-carousel-wrap { overflow: hidden; }
+    .community-track {
+      display: flex;
       gap: 25px;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .comm-card {
+      width: 485px;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       gap: 32px;
     }
     .comm-img-wrap {
       width: 100%;
-      height: 252px;
-      border-radius: 12px;
+      height: 281px;
+      border-radius: 14px;
       overflow: hidden;
       background: #f1f2f4;
       flex-shrink: 0;
@@ -1085,6 +1098,199 @@
       letter-spacing: 0.16px;
       color: var(--text-secondary);
     }
+
+    /* ─── Shared carousel nav ────────────────────────────────── */
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+    .carousel-arrow {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border);
+      box-shadow: inset 0px -2px 4px rgba(238,242,248,0.35);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s ease, transform 0.15s ease, opacity 0.2s ease;
+    }
+    .carousel-arrow:hover { background: var(--bg-subtle); }
+    .carousel-arrow:active { transform: scale(0.96); }
+
+    /* ─── Trusted section ────────────────────────────────────── */
+    .trusted-section {
+      background: #fff;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .trusted-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+    .trusted-header {
+      display: flex;
+      gap: 56px;
+      align-items: flex-end;
+    }
+    .trusted-header-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .trusted-heading {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 40px;
+      color: var(--text-primary);
+    }
+    .trusted-body {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.16px;
+      color: var(--text-secondary);
+    }
+    .trusted-stats {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .trusted-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .trusted-stat-value {
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 36px;
+      color: #272648;
+    }
+    .trusted-stat-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trusted-stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 24px;
+      color: var(--text-secondary);
+    }
+    .trusted-stat-divider {
+      width: 1px;
+      height: 40px;
+      background: #e6e9f0;
+      flex-shrink: 0;
+    }
+    .reviews-carousel-wrap { overflow: hidden; }
+    .reviews-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .review-card {
+      width: 384px;
+      flex-shrink: 0;
+      background: #fff;
+      border: 1px solid #e6e9f0;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0px 1px 1px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .review-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 16px;
+    }
+    .review-date-year {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 18px;
+      color: var(--text-secondary);
+    }
+    .review-date-day {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      color: var(--text-primary);
+      margin-top: 3px;
+    }
+    .review-title {
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      letter-spacing: -0.54px;
+      color: #272648;
+      padding-bottom: 12px;
+    }
+    .review-body {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: var(--text-secondary);
+      flex: 1;
+    }
+    .review-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 21px;
+      margin-top: 21px;
+      border-top: 1px solid #e6e9f0;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .review-author-name {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 18px;
+      color: #272648;
+    }
+    .review-author-role {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 18px;
+      color: var(--text-secondary);
+    }
+    .review-author-company {
+      color: var(--brand);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .review-author-company:hover { text-decoration: underline; }
+    .review-verify {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .review-verify:hover { text-decoration: underline; }
 
     /* ─── Footer ─────────────────────────────────────────────── */
     .footer {
@@ -1755,60 +1961,207 @@
     </div>
   </section>
 
-  <!-- ─── Community ──────────────────────────────────────── -->
+  <!-- ─── Community carousel ──────────────────────────────── -->
   <section class="community-section">
     <div class="page-wrap">
       <div class="community-inner">
 
         <div class="community-header scroll-reveal">
-          <h2 class="community-heading">Your community,<br>not a portfolio</h2>
-          <p class="community-body">Get funded and you're in alongside 731 bootstrapped SaaS founders. Quarterly CEO retreats, invite-only dinners, and a private Slack where founders like those at BadgerMaps, Mangomint, Reply.io, Kissflow — and hundreds more — swap playbooks on hiring, pricing, and cash flow. Not pitch decks.</p>
+          <div class="community-header-left">
+            <h2 class="community-heading">Your community,<br>not a portfolio</h2>
+            <p class="community-body">Get funded and you're in alongside 731 bootstrapped SaaS founders. Quarterly CEO retreats, invite-only dinners, and a private Slack where founders like those at BadgerMaps, Mangomint, Reply.io, Kissflow — and hundreds more — swap playbooks on hiring, pricing, and cash flow. Not pitch decks.</p>
+          </div>
           <div class="community-actions">
             <a href="#" class="btn btn-secondary" style="text-decoration:none;">See if you qualify</a>
             <a href="#" class="btn btn-secondary" style="text-decoration:none;">Check past events</a>
           </div>
         </div>
 
-        <div class="community-cards">
-          <div class="comm-card scroll-reveal" style="--reveal-delay:0s">
-            <div class="comm-img-wrap">
-              <img src="https://www.figma.com/api/mcp/asset/39ec9c3f-7f04-4342-bd9c-c74bcf0582e4" alt="Mentoring From Public CEOs" />
+        <div class="community-carousel-wrap scroll-reveal" style="--reveal-delay:0.1s">
+          <div class="community-track" id="communityTrack">
+            <div class="comm-card">
+              <div class="comm-img-wrap"><img src="https://www.figma.com/api/mcp/asset/68ac0f57-5032-4a56-87f3-1fdd764aefc0" alt="Mentoring From Public CEOs" /></div>
+              <div class="comm-card-text">
+                <p class="comm-card-title">Mentoring From Public CEO's</p>
+                <p class="comm-card-desc">Henry Schuck (Zoominfo CEO) teaching Founderpath CEO's how he went from $5m to $500m in revenue. Watch Recording →</p>
+              </div>
             </div>
-            <div class="comm-card-text">
-              <p class="comm-card-title">Mentoring From Public CEO's</p>
-              <p class="comm-card-desc">Henry Schuck (Zoominfo CEO) teaching Founderpath CEO's how he went from $5m to $500m in revenue. Watch Recording →</p>
+            <div class="comm-card">
+              <div class="comm-img-wrap"><img src="https://www.figma.com/api/mcp/asset/b952a610-af4d-42bb-ad22-f66fa705389a" alt="Guinness Factory Dublin Dinner" /></div>
+              <div class="comm-card-text">
+                <p class="comm-card-title">Guinness Factory Dublin Dinner</p>
+                <p class="comm-card-desc">1 on 1 time with Kim Lecha (Typeform CEO), Godard Abel (G2 CEO), and Greg Galant (Muck Rack CEO). See Inside →</p>
+              </div>
+            </div>
+            <div class="comm-card">
+              <div class="comm-img-wrap"><img src="https://www.figma.com/api/mcp/asset/3dc65948-c66c-4a64-a3d4-d0c7d91064cb" alt="SF Founder Growth Conference" /></div>
+              <div class="comm-card-text">
+                <p class="comm-card-title">SF Founder Growth Conference</p>
+                <p class="comm-card-desc">Each year, Founderpath CEO's get together to discuss tactics, share war stories, and brainstorm solutions.</p>
+              </div>
+            </div>
+            <div class="comm-card">
+              <div class="comm-img-wrap"><img src="https://www.figma.com/api/mcp/asset/3dc65948-c66c-4a64-a3d4-d0c7d91064cb" alt="SF Founder Growth Conference" /></div>
+              <div class="comm-card-text">
+                <p class="comm-card-title">SF Founder Growth Conference</p>
+                <p class="comm-card-desc">Each year, Founderpath CEO's get together to discuss tactics, share war stories, and brainstorm solutions.</p>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="comm-card scroll-reveal" style="--reveal-delay:0.08s">
-            <div class="comm-img-wrap">
-              <img src="https://www.figma.com/api/mcp/asset/f278a316-6274-4343-b19a-be74dbe8412a" alt="Guinness Factory Dublin Dinner" />
-            </div>
-            <div class="comm-card-text">
-              <p class="comm-card-title">Guinness Factory Dublin Dinner</p>
-              <p class="comm-card-desc">1 on 1 time with Kim Lecha (Typeform CEO), Godard Abel (G2 CEO), and Greg Galant (Muck Rack CEO). See Inside →</p>
-            </div>
-          </div>
+        <div class="carousel-nav scroll-reveal" style="--reveal-delay:0.15s">
+          <button class="carousel-arrow" id="commPrev">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="carousel-arrow" id="commNext">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
 
-          <div class="comm-card scroll-reveal" style="--reveal-delay:0.16s">
-            <div class="comm-img-wrap">
-              <img src="https://www.figma.com/api/mcp/asset/bfef351b-2ebf-4452-892c-b8a8b768f483" alt="SF Founder Growth Conference" />
-            </div>
-            <div class="comm-card-text">
-              <p class="comm-card-title">SF Founder Growth Conference</p>
-              <p class="comm-card-desc">Each year, Founderpath CEO's get together to discuss tactics, share war stories, and brainstorm solutions.</p>
-            </div>
-          </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="comm-card scroll-reveal" style="--reveal-delay:0.24s">
-            <div class="comm-img-wrap">
-              <img src="https://www.figma.com/api/mcp/asset/bfef351b-2ebf-4452-892c-b8a8b768f483" alt="SF Founder Growth Conference" />
+  <!-- ─── Trusted ───────────────────────────────────────────── -->
+  <section class="trusted-section">
+    <div class="page-wrap">
+      <div class="trusted-inner">
+
+        <div class="trusted-header scroll-reveal">
+          <div class="trusted-header-left">
+            <h2 class="trusted-heading">Trusted by SaaS founders<br>since 2021.</h2>
+            <p class="trusted-body">731 founders have used Founderpath to grow without giving up equity. From our first deal to today, the reviews speak for themselves.</p>
+          </div>
+          <div class="trusted-stats">
+            <div class="trusted-stat">
+              <p class="trusted-stat-value">$271M</p>
+              <p class="trusted-stat-label">Funded to founders</p>
             </div>
-            <div class="comm-card-text">
-              <p class="comm-card-title">SF Founder Growth Conference</p>
-              <p class="comm-card-desc">Each year, Founderpath CEO's get together to discuss tactics, share war stories, and brainstorm solutions.</p>
+            <div class="trusted-stat-divider"></div>
+            <div class="trusted-stat">
+              <p class="trusted-stat-value">731</p>
+              <p class="trusted-stat-label">Startups funded</p>
+            </div>
+            <div class="trusted-stat-divider"></div>
+            <div class="trusted-stat">
+              <div class="trusted-stat-row">
+                <p class="trusted-stat-value">4.9/5</p>
+                <img src="https://www.figma.com/api/mcp/asset/d1a26b74-1559-4384-8021-b05cfe500e70" height="15" alt="5 stars" style="display:block;" />
+              </div>
+              <p class="trusted-stat-label">On Trustpilot</p>
             </div>
           </div>
+        </div>
+
+        <div class="reviews-carousel-wrap scroll-reveal" style="--reveal-delay:0.1s">
+          <div class="reviews-track" id="reviewsTrack">
+
+            <div class="review-card">
+              <div class="review-card-header">
+                <div><p class="review-date-year">2026</p><p class="review-date-day">Feb 20</p></div>
+                <img src="https://www.figma.com/api/mcp/asset/3fda61c3-1ef9-49d5-b159-5b64fd213e2e" height="19" alt="5 stars" style="display:block;" />
+              </div>
+              <p class="review-title">"Founderpath understands startups!"</p>
+              <p class="review-body">Founderpath understands startups! They bring the <strong>VC mentality without the equity</strong>. It's a great bet over traditional banks or other lenders like Novel. We found that their <strong>terms are the most founder-friendly</strong>, and they move quickly.</p>
+              <div class="review-footer">
+                <div class="review-author">
+                  <img src="https://www.figma.com/api/mcp/asset/20e7307b-a323-42d0-abb2-657b20cede78" class="review-avatar" alt="Seth Killian" />
+                  <div>
+                    <p class="review-author-name">Seth Killian</p>
+                    <p class="review-author-role">Founder of <a href="#" class="review-author-company">Lingco Language Labs</a></p>
+                  </div>
+                </div>
+                <a href="#" class="review-verify">Verify ↗</a>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card-header">
+                <div><p class="review-date-year">2025</p><p class="review-date-day">Jul 18</p></div>
+                <img src="https://www.figma.com/api/mcp/asset/3fda61c3-1ef9-49d5-b159-5b64fd213e2e" height="19" alt="5 stars" style="display:block;" />
+              </div>
+              <p class="review-title">"Great experience, professional team, highly recommend"</p>
+              <p class="review-body">A seamless, pleasant experience from start to finish. Nathan and his team are great to work with, responsive, knowledgeable and diligent. We were able to successfully <strong>close in less than a week</strong>. I highly recommend them!</p>
+              <div class="review-footer">
+                <div class="review-author">
+                  <img src="https://www.figma.com/api/mcp/asset/563bbb6a-4c70-4a22-8d1d-ba2dc6c0434a" class="review-avatar" alt="Vishy Visweswaran" />
+                  <div>
+                    <p class="review-author-name">Vishy Visweswaran</p>
+                    <p class="review-author-role">Founder of <a href="#" class="review-author-company">SupplyHive</a></p>
+                  </div>
+                </div>
+                <a href="#" class="review-verify">Verify ↗</a>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card-header">
+                <div><p class="review-date-year">2024</p><p class="review-date-day">May 10</p></div>
+                <img src="https://www.figma.com/api/mcp/asset/3fda61c3-1ef9-49d5-b159-5b64fd213e2e" height="19" alt="5 stars" style="display:block;" />
+              </div>
+              <p class="review-title">"Founderpath is the easy button!"</p>
+              <p class="review-body">Founderpath is the easy button! <strong>They move very quick, the slowest part of getting money was me.</strong> We have a unique business model and they took the time to understand it and get behind us. Looking forward to more rounds together.</p>
+              <div class="review-footer">
+                <div class="review-author">
+                  <img src="https://www.figma.com/api/mcp/asset/735cf30a-9ec4-4ad6-bc0d-644a659c1a9a" class="review-avatar" alt="Rachel Kuhr Conn" />
+                  <div>
+                    <p class="review-author-name">Rachel Kuhr Conn</p>
+                    <p class="review-author-role">Founder of <a href="#" class="review-author-company">Productable</a></p>
+                  </div>
+                </div>
+                <a href="#" class="review-verify">Verify ↗</a>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card-header">
+                <div><p class="review-date-year">2024</p><p class="review-date-day">Mar 05</p></div>
+                <img src="https://www.figma.com/api/mcp/asset/3fda61c3-1ef9-49d5-b159-5b64fd213e2e" height="19" alt="5 stars" style="display:block;" />
+              </div>
+              <p class="review-title">"Fast, founder-first, no BS"</p>
+              <p class="review-body">We had capital in our account in under 48 hours. The process was completely frictionless — <strong>no pitch deck, no board meetings, no equity</strong>. Just connect your data and you're done. Will absolutely use Founderpath again.</p>
+              <div class="review-footer">
+                <div class="review-author">
+                  <img src="https://www.figma.com/api/mcp/asset/20e7307b-a323-42d0-abb2-657b20cede78" class="review-avatar" alt="Founder" />
+                  <div>
+                    <p class="review-author-name">Marcus Webb</p>
+                    <p class="review-author-role">Founder of <a href="#" class="review-author-company">Launchmetrics</a></p>
+                  </div>
+                </div>
+                <a href="#" class="review-verify">Verify ↗</a>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card-header">
+                <div><p class="review-date-year">2023</p><p class="review-date-day">Nov 14</p></div>
+                <img src="https://www.figma.com/api/mcp/asset/3fda61c3-1ef9-49d5-b159-5b64fd213e2e" height="19" alt="5 stars" style="display:block;" />
+              </div>
+              <p class="review-title">"Best alternative to VC we've found"</p>
+              <p class="review-body">After getting term sheets with painful dilution from VCs, Founderpath was a revelation. <strong>Same capital, zero equity given up.</strong> The team is knowledgeable about SaaS metrics and the whole process took less than a week.</p>
+              <div class="review-footer">
+                <div class="review-author">
+                  <img src="https://www.figma.com/api/mcp/asset/563bbb6a-4c70-4a22-8d1d-ba2dc6c0434a" class="review-avatar" alt="Founder" />
+                  <div>
+                    <p class="review-author-name">Priya Anand</p>
+                    <p class="review-author-role">Founder of <a href="#" class="review-author-company">Cacheflow</a></p>
+                  </div>
+                </div>
+                <a href="#" class="review-verify">Verify ↗</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="carousel-nav scroll-reveal" style="--reveal-delay:0.15s">
+          <button class="carousel-arrow" id="reviewsPrev">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="carousel-arrow" id="reviewsNext">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
 
       </div>
@@ -1927,6 +2280,42 @@
         observer.observe(el);
       });
     })();
+
+    // ── Generic carousel factory ──────────────────────────────
+    function initCarousel(trackId, prevId, nextId) {
+      var track = document.getElementById(trackId);
+      if (!track) return;
+      var cards = track.children;
+      var idx = 0;
+
+      function cardW() { return cards[0].offsetWidth; }
+      function gap() { return parseInt(getComputedStyle(track).gap) || 0; }
+      function maxIdx() {
+        var step = cardW() + gap();
+        var perView = Math.floor((track.parentElement.offsetWidth + gap()) / step);
+        return Math.max(0, cards.length - perView);
+      }
+      function update() {
+        var step = cardW() + gap();
+        track.style.transform = 'translateX(' + (-idx * step) + 'px)';
+        var prev = document.getElementById(prevId);
+        var next = document.getElementById(nextId);
+        prev.style.opacity = idx === 0 ? '0.35' : '1';
+        prev.style.pointerEvents = idx === 0 ? 'none' : '';
+        var m = maxIdx();
+        next.style.opacity = idx >= m ? '0.35' : '1';
+        next.style.pointerEvents = idx >= m ? 'none' : '';
+      }
+      document.getElementById(prevId).addEventListener('click', function() {
+        idx = Math.max(0, idx - 1); update();
+      });
+      document.getElementById(nextId).addEventListener('click', function() {
+        idx = Math.min(maxIdx(), idx + 1); update();
+      });
+      update();
+    }
+    initCarousel('communityTrack', 'commPrev', 'commNext');
+    initCarousel('reviewsTrack', 'reviewsPrev', 'reviewsNext');
 
     // ── FAQ accordion ─────────────────────────────────────────
     (function() {
