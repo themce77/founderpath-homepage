@@ -198,19 +198,9 @@
 
     /* ─── Social proof cards ─────────────────────────────────── */
     @keyframes gradientShift {
-      0%   { background-position: 0% 30%; }
-      25%  { background-position: 80% 70%; }
-      50%  { background-position: 100% 20%; }
-      75%  { background-position: 20% 90%; }
-      100% { background-position: 0% 30%; }
-    }
-    @keyframes playPulse {
-      0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(255,0,0,0.5); }
-      50%       { transform: scale(1.12); box-shadow: 0 0 0 8px rgba(255,0,0,0);   }
-    }
-    @keyframes cardFloat {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-4px); }
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     .social-proof-wrap {
       border-radius: var(--radius-lg);
@@ -227,7 +217,7 @@
         rgb(0,0,0)       78%,
         rgb(0,4,213)     100%);
       background-size: 500% 500%;
-      animation: gradientShift 4s ease infinite;
+      animation: gradientShift 10s ease infinite;
     }
     .social-proof-cards {
       display: flex;
@@ -242,10 +232,7 @@
       flex-direction: column;
       gap: 8px;
       overflow: hidden;
-      animation: cardFloat 4s ease-in-out infinite;
     }
-    .proof-card:nth-child(2) { animation-delay: -1.3s; }
-    .proof-card:nth-child(3) { animation-delay: -2.6s; }
 
     .proof-card-logo {
       padding: 16px;
@@ -290,7 +277,6 @@
       cursor: pointer;
       padding: 0;
       z-index: 2;
-      animation: playPulse 2s ease-in-out infinite;
     }
     .play-btn svg { width: 16px; height: 16px; }
 
@@ -569,7 +555,6 @@
       transition: transform 0.2s ease;
     }
     .product-card:hover { transform: translateY(-4px); }
-    .product-card:hover .product-visual { box-shadow: 0 12px 32px rgba(68,61,216,0.12); }
     .product-visual {
       background: var(--bg-subtle);
       border-radius: var(--radius-lg);
