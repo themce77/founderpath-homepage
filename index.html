@@ -1344,100 +1344,101 @@
 
     /* ─── Financing Quiz ────────────────────────────────────── */
     .quiz-section {
-      background: var(--bg-subtle);
-      padding-top: 80px;
-      padding-bottom: 80px;
+      background: #F7F8FC;
+      padding-top: 96px;
+      padding-bottom: 96px;
     }
-    .quiz-card {
-      background: #fff;
-      border-radius: 24px;
-      padding: 64px;
-      max-width: 720px;
+    .quiz-outer {
+      max-width: 672px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 40px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.06);
+      gap: 32px;
     }
-    .quiz-header { display: flex; flex-direction: column; gap: 12px; }
-    .quiz-eyebrow {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--brand);
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .quiz-heading-block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
     .quiz-title {
       font-family: 'Founders Grotesk', sans-serif;
-      font-size: 32px;
+      font-size: 40px;
       font-weight: 500;
       color: #111;
-      line-height: 36px;
+      line-height: 40px;
     }
     .quiz-sub {
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
+      font-weight: 400;
+      color: #515765;
+      line-height: 24px;
+      letter-spacing: 0.16px;
+    }
+    .quiz-card {
+      background: #fff;
+      border: 1px solid #E6E9F0;
+      border-radius: 16px;
+      padding: 33px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: 0px 1px 1px rgba(0,0,0,0.05);
+    }
+    .quiz-progress-segs {
+      display: flex;
+      gap: 8px;
+    }
+    .quiz-seg {
+      flex: 1;
+      height: 6px;
+      border-radius: 9999px;
+      background: #E6E9F0;
+      transition: background 0.3s;
+    }
+    .quiz-seg.active { background: #443DD8; }
+    .quiz-step-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
       color: #515765;
       line-height: 24px;
     }
-    .quiz-progress {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 4px;
-    }
-    .quiz-progress-bar {
-      flex: 1;
-      height: 4px;
-      background: #EBEBEB;
-      border-radius: 100px;
-      overflow: hidden;
-    }
-    .quiz-progress-fill {
-      height: 100%;
-      background: var(--brand);
-      border-radius: 100px;
-      transition: width 0.4s ease;
-    }
-    .quiz-progress-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #515765;
-      white-space: nowrap;
-    }
     .quiz-question {
       font-family: 'Founders Grotesk', sans-serif;
-      font-size: 22px;
-      font-weight: 500;
-      color: #111;
-      line-height: 28px;
-      margin-bottom: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      line-height: 24px;
+      letter-spacing: 0.16px;
     }
     .quiz-options {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+      padding-top: 16px;
     }
     .quiz-option {
-      padding: 14px 20px;
-      border: 1.5px solid #EBEBEB;
+      padding: 17px 21px;
+      border: 1px solid #E6E9F0;
       border-radius: 12px;
       background: #fff;
       font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-      color: #111;
+      font-size: 14px;
+      font-weight: 500;
+      color: #515765;
       text-align: left;
       cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
+      line-height: 20px;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
     }
-    .quiz-option:hover { border-color: var(--brand); background: rgba(68,61,216,0.04); }
-    .quiz-option.selected { border-color: var(--brand); background: rgba(68,61,216,0.06); font-weight: 500; }
+    .quiz-option:hover { border-color: #443DD8; color: #111; background: rgba(68,61,216,0.03); }
+    .quiz-option.selected { border-color: #443DD8; color: #111; background: rgba(68,61,216,0.05); }
     .quiz-result { display: flex; flex-direction: column; gap: 12px; }
     .quiz-result-label {
       font-size: 13px;
       font-weight: 600;
-      color: var(--brand);
+      color: #443DD8;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -1458,13 +1459,14 @@
 
     /* ─── Announcement bar ──────────────────────────────────── */
     .announce-bar {
-      background: #111111;
+      background: linear-gradient(135deg, #8D20F7 0%, #02B7FC 100%);
       padding: 0 var(--page-px);
       height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 24px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
     .announce-timer {
       display: flex;
@@ -1472,7 +1474,7 @@
       align-items: center;
     }
     .announce-unit {
-      background: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.2);
       border-radius: 4px;
       padding: 2px 6px;
       font-family: 'Inter', sans-serif;
@@ -1480,39 +1482,50 @@
       font-weight: 600;
       color: #fff;
       line-height: 16px;
-      letter-spacing: 0.5px;
     }
-    .announce-sep {
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
+    .announce-unit-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
       line-height: 16px;
     }
     .announce-text {
       font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: rgba(255,255,255,0.85);
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
       line-height: 20px;
     }
-    .announce-text strong { color: #fff; font-weight: 600; }
+    .announce-text strong { font-weight: 600; }
     .announce-seats {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 9999px;
+      padding: 2px 8px;
       font-family: 'Inter', sans-serif;
       font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      line-height: 20px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 16px;
+    }
+    .announce-seats-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      flex-shrink: 0;
     }
     .announce-cta {
       font-family: 'Inter', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: #fff;
-      text-decoration: none;
+      text-decoration: underline;
       white-space: nowrap;
-      padding: 4px 12px;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 100px;
-      transition: background 0.15s;
     }
-    .announce-cta:hover { background: rgba(255,255,255,0.1); }
+    .announce-cta:hover { opacity: 0.85; }
 
     /* ─── Footer ─────────────────────────────────────────────── */
     .footer {
@@ -1545,34 +1558,52 @@
       gap: 12px;
     }
     .footer-col-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
+      font-family: 'Founders Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
       color: #111111;
+      letter-spacing: 0.18px;
       line-height: 20px;
-      margin-bottom: 4px;
+      padding-top: 8px;
+      padding-bottom: 16px;
     }
     .footer-link {
       font-family: 'Inter', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 400;
       color: #515765;
-      line-height: 20px;
+      line-height: 24px;
       text-decoration: none;
       display: block;
     }
     .footer-link:hover { color: #111111; }
-    .footer-badge {
+    .footer-badge-new {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      font-size: 11px;
+      background: #443DD8;
+      border-radius: 4px;
+      padding: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 10px;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+    .footer-badge-up {
+      display: inline-flex;
+      align-items: center;
+      background: #E0F3E2;
+      border-radius: 6px;
+      padding: 1px 4px;
+      height: 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
       font-weight: 600;
-      color: #22b573;
-      background: rgba(34,181,115,0.1);
-      border-radius: 100px;
-      padding: 1px 6px;
+      color: #92CE46;
       line-height: 16px;
+      margin-left: 6px;
     }
     .footer-status-dot {
       width: 6px; height: 6px;
@@ -1588,8 +1619,8 @@
     }
     .footer-compliance img { height: 40px; width: auto; }
     .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding: 20px 0;
+      border-top: 1px solid #E6E9F0;
+      padding: 32px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1597,31 +1628,60 @@
     }
     .footer-copy {
       font-family: 'Inter', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 500;
       color: #515765;
       line-height: 20px;
+    }
+    .footer-bottom-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-ai-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .footer-ai-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #515765;
+      margin-right: 8px;
     }
     .footer-bottom-icons {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
     }
     .footer-icon-link {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      color: #515765;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
       text-decoration: none;
-      transition: background 0.15s, color 0.15s;
+      transition: background 0.15s;
     }
-    .footer-icon-link:hover { background: var(--bg-subtle); color: #111; }
+    .footer-icon-link:hover { background: var(--bg-subtle); }
     .footer-icon-link img { width: 16px; height: 16px; object-fit: contain; }
+    .footer-social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .footer-social-link:hover { background: var(--bg-subtle); }
+    .footer-social-link img { width: 16px; height: 16px; object-fit: contain; }
     .footer-bottom-divider {
-      width: 1px; height: 16px;
-      background: var(--border);
+      width: 1px; height: 24px;
+      background: #E6E9F0;
       flex-shrink: 0;
     }
   </style>
@@ -1631,13 +1691,13 @@
   <!-- ─── Announcement bar ────────────────────────────────── -->
   <div class="announce-bar" id="announceBar">
     <div class="announce-timer" id="announceTimer">
-      <span class="announce-unit" id="adays">20</span><span class="announce-sep">d</span>
-      <span class="announce-unit" id="ahours">21</span><span class="announce-sep">h</span>
-      <span class="announce-unit" id="amins">11</span><span class="announce-sep">m</span>
-      <span class="announce-unit" id="asecs">36</span><span class="announce-sep">s</span>
+      <span class="announce-unit">20</span><span class="announce-unit-label">d</span>
+      <span class="announce-unit">21</span><span class="announce-unit-label">h</span>
+      <span class="announce-unit">11</span><span class="announce-unit-label">m</span>
+      <span class="announce-unit">36</span><span class="announce-unit-label">s</span>
     </div>
     <p class="announce-text"><strong>AI Growth Summit:</strong> 9 Tactics to Add $10m Fast</p>
-    <span class="announce-seats">121/150 seats taken</span>
+    <span class="announce-seats"><span class="announce-seats-dot"></span>121/150 seats taken</span>
     <a href="#" class="announce-cta">Reserve your spot →</a>
   </div>
 
@@ -2267,63 +2327,70 @@
   <!-- ─── Financing Quiz ──────────────────────────────────── -->
   <section class="quiz-section">
     <div class="page-wrap">
-      <div class="quiz-card scroll-reveal">
+      <div class="quiz-outer scroll-reveal">
 
-        <div class="quiz-header">
-          <p class="quiz-eyebrow">FIND YOUR BEST FINANCING OPTION</p>
-          <h2 class="quiz-title">What type of financing is right for your business?</h2>
-          <p class="quiz-sub">Answer 3 quick questions to see your options.</p>
-          <div class="quiz-progress">
-            <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizFill" style="width:33%"></div></div>
-            <span class="quiz-progress-label"><span id="quizStep">1</span> / 3</span>
-          </div>
+        <div class="quiz-heading-block">
+          <h2 class="quiz-title">Find your best financing option</h2>
+          <p class="quiz-sub">Answer 3 quick questions to get a personalized recommendation.</p>
         </div>
 
-        <!-- Step 1 -->
-        <div class="quiz-step" id="qStep1">
-          <p class="quiz-question">What is your company's Annual Recurring Revenue (ARR)?</p>
-          <div class="quiz-options" id="qOptions1">
-            <button class="quiz-option" data-step="1" data-val="pre">Pre-revenue</button>
-            <button class="quiz-option" data-step="1" data-val="0-1m">$0 – $1M</button>
-            <button class="quiz-option" data-step="1" data-val="1-5m">$1M – $5M</button>
-            <button class="quiz-option" data-step="1" data-val="5-10m">$5M – $10M</button>
-            <button class="quiz-option" data-step="1" data-val="10m+">$10M+</button>
-          </div>
-        </div>
+        <div class="quiz-card">
 
-        <!-- Step 2 -->
-        <div class="quiz-step" id="qStep2" style="display:none">
-          <p class="quiz-question">What do you plan to use the capital for?</p>
-          <div class="quiz-options" id="qOptions2">
-            <button class="quiz-option" data-step="2" data-val="growth">Sales &amp; marketing growth</button>
-            <button class="quiz-option" data-step="2" data-val="hiring">Hiring &amp; team expansion</button>
-            <button class="quiz-option" data-step="2" data-val="product">Product development</button>
-            <button class="quiz-option" data-step="2" data-val="cashflow">Cash flow / runway</button>
+          <div class="quiz-progress-segs" id="quizSegs">
+            <div class="quiz-seg active" id="qSeg1"></div>
+            <div class="quiz-seg" id="qSeg2"></div>
+            <div class="quiz-seg" id="qSeg3"></div>
           </div>
-        </div>
 
-        <!-- Step 3 -->
-        <div class="quiz-step" id="qStep3" style="display:none">
-          <p class="quiz-question">How quickly do you need the capital?</p>
-          <div class="quiz-options" id="qOptions3">
-            <button class="quiz-option" data-step="3" data-val="now">Within 24–72 hours</button>
-            <button class="quiz-option" data-step="3" data-val="week">Within a week</button>
-            <button class="quiz-option" data-step="3" data-val="month">Within a month</button>
-            <button class="quiz-option" data-step="3" data-val="flexible">Flexible timeline</button>
+          <!-- Step 1 -->
+          <div class="quiz-step" id="qStep1">
+            <p class="quiz-step-label">Question 1 of 3</p>
+            <p class="quiz-question">What's your annual recurring revenue (ARR)?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-step="1" data-val="pre">Pre-revenue</button>
+              <button class="quiz-option" data-step="1" data-val="0-1m">$0 – $1M / year</button>
+              <button class="quiz-option" data-step="1" data-val="1-5m">$1M – $5M / year</button>
+              <button class="quiz-option" data-step="1" data-val="5-10m">$5M – $10M / year</button>
+              <button class="quiz-option" data-step="1" data-val="10m+">$10M+ / year</button>
+            </div>
           </div>
-        </div>
 
-        <!-- Result -->
-        <div class="quiz-result" id="qResult" style="display:none">
-          <p class="quiz-result-label">Best match for your profile</p>
-          <p class="quiz-result-product" id="qResultProduct">Revenue Financing</p>
-          <p class="quiz-result-desc" id="qResultDesc">Get capital based on your MRR — no equity, no board seats. Offers from $10K–$10M.</p>
-          <div class="quiz-result-actions">
-            <a href="#" class="btn btn-primary" style="text-decoration:none;">Get my offer</a>
-            <button class="quiz-restart btn btn-secondary">Start over</button>
+          <!-- Step 2 -->
+          <div class="quiz-step" id="qStep2" style="display:none">
+            <p class="quiz-step-label">Question 2 of 3</p>
+            <p class="quiz-question">What do you plan to use the capital for?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-step="2" data-val="growth">Sales &amp; marketing growth</button>
+              <button class="quiz-option" data-step="2" data-val="hiring">Hiring &amp; team expansion</button>
+              <button class="quiz-option" data-step="2" data-val="product">Product development</button>
+              <button class="quiz-option" data-step="2" data-val="cashflow">Cash flow / runway</button>
+            </div>
           </div>
-        </div>
 
+          <!-- Step 3 -->
+          <div class="quiz-step" id="qStep3" style="display:none">
+            <p class="quiz-step-label">Question 3 of 3</p>
+            <p class="quiz-question">How quickly do you need the capital?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-step="3" data-val="now">Within 24–72 hours</button>
+              <button class="quiz-option" data-step="3" data-val="week">Within a week</button>
+              <button class="quiz-option" data-step="3" data-val="month">Within a month</button>
+              <button class="quiz-option" data-step="3" data-val="flexible">Flexible timeline</button>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="quiz-result" id="qResult" style="display:none">
+            <p class="quiz-result-label">Best match for your profile</p>
+            <p class="quiz-result-product" id="qResultProduct">Revenue Financing</p>
+            <p class="quiz-result-desc" id="qResultDesc">Get capital based on your MRR — no equity, no board seats. Offers from $10K–$10M.</p>
+            <div class="quiz-result-actions">
+              <a href="#" class="btn btn-primary" style="text-decoration:none;">Get my offer</a>
+              <button class="quiz-restart btn btn-secondary">Start over</button>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
@@ -2686,10 +2753,6 @@
 
         <div class="footer-brand">
           <img src="assets/images/logo.svg" alt="Founderpath" class="footer-logo" />
-          <div class="footer-compliance">
-            <img src="assets/images/badge-soc2.svg" alt="SOC 2" onerror="this.style.display='none'" />
-            <img src="assets/images/badge-gdpr.svg" alt="GDPR Compliant" onerror="this.style.display='none'" />
-          </div>
         </div>
 
         <div class="footer-cols">
@@ -2698,7 +2761,7 @@
             <p class="footer-col-title">Products</p>
             <a href="#" class="footer-link">Revenue Financing</a>
             <a href="#" class="footer-link">Term Loan</a>
-            <a href="#" class="footer-link">Line of Credit</a>
+            <a href="#" class="footer-link">Line of Credit <span class="footer-badge-new">New</span></a>
             <a href="#" class="footer-link">Merchant Cash Advance</a>
           </div>
 
@@ -2711,44 +2774,43 @@
 
           <div class="footer-col">
             <p class="footer-col-title">Resources</p>
+            <a href="#" class="footer-link">Software Private Credit Report</a>
+            <a href="#" class="footer-link">Growth Playbooks</a>
+            <a href="#" class="footer-link">SaaS Financing Options</a>
+            <a href="#" class="footer-link">Free Courses</a>
             <a href="#" class="footer-link">Blog</a>
-            <a href="#" class="footer-link">Case Studies</a>
-            <a href="#" class="footer-link">SaaS Metrics Guide</a>
-            <a href="#" class="footer-link">Revenue Calculator</a>
-            <a href="#" class="footer-link">Capital Quiz</a>
             <a href="#" class="footer-link">Glossary</a>
-            <a href="#" class="footer-link">Podcast</a>
-            <a href="#" class="footer-link">Newsletter</a>
+            <a href="#" class="footer-link">Integrations</a>
+            <a href="#" class="footer-link">Case Studies</a>
           </div>
 
           <div class="footer-col">
             <p class="footer-col-title">Free Tools</p>
-            <a href="#" class="footer-link">MRR Calculator</a>
-            <a href="#" class="footer-link">Valuation Tool</a>
-            <a href="#" class="footer-link">SaaS Benchmarks</a>
+            <a href="#" class="footer-link">Bank Statement Converter</a>
+            <a href="#" class="footer-link">Salary Benchmarks</a>
+            <a href="#" class="footer-link">See all Free Tools →</a>
           </div>
 
           <div class="footer-col">
             <p class="footer-col-title">Events</p>
-            <a href="#" class="footer-link">AI Growth Summit</a>
-            <a href="#" class="footer-link">CEO Retreats</a>
-            <a href="#" class="footer-link">Founder Dinners</a>
-            <a href="#" class="footer-link">SF Conference</a>
-            <a href="#" class="footer-link">Dublin Dinner</a>
-            <a href="#" class="footer-link">Napa Retreat</a>
             <a href="#" class="footer-link">Past Events</a>
+            <a href="#" class="footer-link">Upcoming Events</a>
+            <a href="#" class="footer-link">SaaS Events</a>
+            <a href="#" class="footer-link">Napa Valley CA 2026</a>
+            <a href="#" class="footer-link">Join Live Webinar</a>
+            <a href="#" class="footer-link">See all Events →</a>
           </div>
 
           <div class="footer-col">
             <p class="footer-col-title">Company</p>
             <a href="#" class="footer-link">About Us</a>
-            <a href="#" class="footer-link">Team</a>
-            <a href="#" class="footer-link">Careers</a>
-            <a href="#" class="footer-link">Press</a>
+            <a href="#" class="footer-link">Referrals</a>
             <a href="#" class="footer-link">Partners</a>
-            <a href="#" class="footer-link">Contact</a>
-            <a href="#" class="footer-link">Affiliates</a>
-            <span class="footer-link" style="display:flex;align-items:center;gap:6px;">Status <span class="footer-badge"><span class="footer-status-dot"></span>UP</span></span>
+            <a href="#" class="footer-link">Reviews</a>
+            <a href="#" class="footer-link">Media Kit</a>
+            <a href="#" class="footer-link">One Pager</a>
+            <a href="#" class="footer-link">Feedback</a>
+            <a href="#" class="footer-link" style="display:inline-flex;align-items:center;">Status <span class="footer-badge-up">UP</span></a>
           </div>
 
           <div class="footer-col">
@@ -2758,31 +2820,45 @@
             <a href="#" class="footer-link">vs Capchase</a>
             <a href="#" class="footer-link">vs SaaS Capital</a>
             <a href="#" class="footer-link">vs Clearco</a>
+            <a href="#" class="footer-link">See all comparisons →</a>
           </div>
 
           <div class="footer-col">
             <p class="footer-col-title">Legal</p>
             <a href="#" class="footer-link">Privacy Policy</a>
-            <a href="#" class="footer-link">Terms of Service</a>
-            <a href="#" class="footer-link">Security</a>
+            <a href="#" class="footer-link">Term of Service</a>
+            <a href="#" class="footer-link">Security Center</a>
             <a href="#" class="footer-link">Bug Bounty</a>
+            <a href="#" class="footer-link" style="margin-top:8px;">
+              <img src="assets/images/badge-soc2.png" alt="SOC 2 Compliant" style="height:32px;width:auto;" onerror="this.style.display='none'" />
+            </a>
+            <a href="#" class="footer-link">
+              <img src="assets/images/badge-gdpr.png" alt="GDPR Compliant" style="height:32px;width:auto;" onerror="this.style.display='none'" />
+            </a>
           </div>
 
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 Founderpath, Inc. All rights reserved.</p>
-        <div class="footer-bottom-icons">
-          <a href="#" class="footer-icon-link" title="ChatGPT"><img src="assets/images/ai-chatgpt.svg" alt="ChatGPT" onerror="this.parentElement.style.display='none'" /></a>
-          <a href="#" class="footer-icon-link" title="Claude"><img src="assets/images/ai-claude.svg" alt="Claude" onerror="this.parentElement.style.display='none'" /></a>
-          <a href="#" class="footer-icon-link" title="Gemini"><img src="assets/images/ai-gemini.svg" alt="Gemini" onerror="this.parentElement.style.display='none'" /></a>
-          <a href="#" class="footer-icon-link" title="Grok"><img src="assets/images/ai-grok.svg" alt="Grok" onerror="this.parentElement.style.display='none'" /></a>
-          <a href="#" class="footer-icon-link" title="Perplexity"><img src="assets/images/ai-perplexity.svg" alt="Perplexity" onerror="this.parentElement.style.display='none'" /></a>
+        <p class="footer-copy">&copy; 2026 Founderpath, Inc. All Rights Reserved.</p>
+        <div class="footer-bottom-right">
+          <div class="footer-ai-group">
+            <span class="footer-ai-label">AI summary:</span>
+            <div class="footer-bottom-icons">
+              <a href="#" class="footer-icon-link" title="ChatGPT"><img src="assets/images/ai-chatgpt.png" alt="ChatGPT" /></a>
+              <a href="#" class="footer-icon-link" title="Claude"><img src="assets/images/ai-claude.png" alt="Claude" /></a>
+              <a href="#" class="footer-icon-link" title="Gemini"><img src="assets/images/ai-gemini.png" alt="Gemini" /></a>
+              <a href="#" class="footer-icon-link" title="Grok"><img src="assets/images/ai-grok.png" alt="Grok" /></a>
+              <a href="#" class="footer-icon-link" title="Perplexity"><img src="assets/images/ai-perplexity.png" alt="Perplexity" /></a>
+            </div>
+          </div>
           <div class="footer-bottom-divider"></div>
-          <a href="#" class="footer-icon-link" title="YouTube"><img src="assets/images/social-youtube.svg" alt="YouTube" onerror="this.parentElement.style.display='none'" /></a>
-          <a href="#" class="footer-icon-link" title="LinkedIn"><img src="assets/images/social-linkedin.svg" alt="LinkedIn" onerror="this.parentElement.style.display='none'" /></a>
-          <a href="#" class="footer-icon-link" title="X"><img src="assets/images/social-x.svg" alt="X" onerror="this.parentElement.style.display='none'" /></a>
+          <div class="footer-bottom-icons">
+            <a href="#" class="footer-social-link" title="YouTube"><img src="assets/images/social-youtube.png" alt="YouTube" /></a>
+            <a href="#" class="footer-social-link" title="LinkedIn"><img src="assets/images/social-linkedin.png" alt="LinkedIn" /></a>
+            <a href="#" class="footer-social-link" title="X"><img src="assets/images/social-x.png" alt="X" /></a>
+          </div>
         </div>
       </div>
 
@@ -2803,10 +2879,10 @@
         var s = Math.floor((diff % 60000) / 1000);
         var el = document.getElementById('announceTimer');
         if (el) el.innerHTML =
-          '<span class="announce-unit">'+pad(d)+'</span><span class="announce-sep">d</span> '+
-          '<span class="announce-unit">'+pad(h)+'</span><span class="announce-sep">h</span> '+
-          '<span class="announce-unit">'+pad(m)+'</span><span class="announce-sep">m</span> '+
-          '<span class="announce-unit">'+pad(s)+'</span><span class="announce-sep">s</span>';
+          '<span class="announce-unit">'+pad(d)+'</span><span class="announce-unit-label">d</span>'+
+          '<span class="announce-unit">'+pad(h)+'</span><span class="announce-unit-label">h</span>'+
+          '<span class="announce-unit">'+pad(m)+'</span><span class="announce-unit-label">m</span>'+
+          '<span class="announce-unit">'+pad(s)+'</span><span class="announce-unit-label">s</span>';
       }
       tick();
       setInterval(tick, 1000);
@@ -2962,9 +3038,10 @@
         document.getElementById('qStep2').style.display = n === 2 ? '' : 'none';
         document.getElementById('qStep3').style.display = n === 3 ? '' : 'none';
         document.getElementById('qResult').style.display = n === 4 ? '' : 'none';
-        var pct = n <= 3 ? (n / 3 * 100) : 100;
-        document.getElementById('quizFill').style.width = pct + '%';
-        document.getElementById('quizStep').textContent = Math.min(n, 3);
+        [1,2,3].forEach(function(i) {
+          var seg = document.getElementById('qSeg' + i);
+          if (seg) seg.classList.toggle('active', i <= (n === 4 ? 3 : n));
+        });
       }
       document.querySelectorAll('.quiz-option').forEach(function(btn) {
         btn.addEventListener('click', function() {
