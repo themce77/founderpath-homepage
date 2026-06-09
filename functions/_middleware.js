@@ -1,4 +1,5 @@
-const COOKIE_NAME = 'hp2_auth';
+const PASSWORD = 'founderpathwidelab123!';
+const COOKIE_NAME = 'fp_auth';
 const COOKIE_VALUE = 'ok_2026';
 
 const LOGIN_HTML = `<!DOCTYPE html>
@@ -6,7 +7,7 @@ const LOGIN_HTML = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homepage 2 — Protected Preview</title>
+  <title>Founderpath — Protected Preview</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -84,7 +85,7 @@ const LOGIN_HTML = `<!DOCTYPE html>
 </head>
 <body>
   <div class="card">
-    <div class="logo">Widelab</div>
+    <div class="logo">Founderpath</div>
     <h1>Protected preview</h1>
     <p>Enter the password to access this page.</p>
     <form method="POST" action="/__auth">
@@ -98,9 +99,8 @@ const LOGIN_HTML = `<!DOCTYPE html>
 </html>`;
 
 export async function onRequest(context) {
-  const { request, next, env } = context;
+  const { request, next } = context;
   const url = new URL(request.url);
-  const PASSWORD = env.HASLO;
 
   // Handle auth form submission
   if (url.pathname === '/__auth' && request.method === 'POST') {
@@ -118,6 +118,7 @@ export async function onRequest(context) {
       });
     }
 
+    // Wrong password — show form with error
     const html = LOGIN_HTML.replace('display: none;', 'display: block;').replace('SHOWERROR', 'visible');
     return new Response(html, {
       status: 401,
@@ -129,7 +130,9 @@ export async function onRequest(context) {
   const cookie = request.headers.get('Cookie') || '';
   const authenticated = cookie.split(';').some(c => c.trim() === `${COOKIE_NAME}=${COOKIE_VALUE}`);
 
-  if (authenticated) return next();
+  if (authenticated) {
+    return next();
+  }
 
   // Show login form
   const html = LOGIN_HTML.replace('SHOWERROR', '');
