@@ -198,100 +198,121 @@
 
     /* ─── Social proof cards ─────────────────────────────────── */
     @keyframes gradientShift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0%   { background-position: 0% 30%; }
+      25%  { background-position: 80% 70%; }
+      50%  { background-position: 100% 20%; }
+      75%  { background-position: 20% 90%; }
+      100% { background-position: 0% 30%; }
+    }
+    @keyframes playPulse {
+      0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(255,0,0,0.5); }
+      50%       { transform: scale(1.12); box-shadow: 0 0 0 8px rgba(255,0,0,0);   }
+    }
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-4px); }
     }
     .social-proof-wrap {
       border-radius: var(--radius-lg);
-      padding: 4px;
+      padding: 6px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      background: linear-gradient(120deg, #ddeafc 0%, #a8c0ef 20%, #3a5fbd 50%, #0b1e5c 75%, #050d2e 100%);
-      background-size: 300% 300%;
-      animation: gradientShift 7s ease infinite;
+      /* exact Figma gradient colours */
+      background: linear-gradient(146deg,
+        rgb(216,225,247) 0%,
+        rgb(153,179,232) 15%,
+        rgb(223,238,238) 28%,
+        rgb(40,92,230)   50%,
+        rgb(0,0,0)       78%,
+        rgb(0,4,213)     100%);
+      background-size: 500% 500%;
+      animation: gradientShift 4s ease infinite;
     }
     .social-proof-cards {
       display: flex;
-      gap: 4px;
+      gap: 6px;
     }
     .proof-card {
       flex: 1;
       background: #fff;
-      border: 1px solid var(--border-subtle);
-      border-radius: calc(var(--radius-md) - 2px);
+      border-radius: 16px;
       padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 8px;
       overflow: hidden;
+      animation: cardFloat 4s ease-in-out infinite;
     }
+    .proof-card:nth-child(2) { animation-delay: -1.3s; }
+    .proof-card:nth-child(3) { animation-delay: -2.6s; }
+
     .proof-card-logo {
-      padding: 4px 8px 8px;
-      height: 44px;
+      padding: 16px;
+      height: 51px;
       display: flex;
       align-items: center;
     }
-    .proof-card-logo img { height: 22px; width: auto; }
+    .proof-card-logo img { height: 19px; width: 121px; object-fit: contain; object-position: left; }
 
     /* video thumbnail */
     .proof-card-thumb {
-      border-radius: 12px;
-      height: 196px;
+      border-radius: 16px;
+      height: 204px;
       width: 100%;
       overflow: hidden;
       position: relative;
       cursor: pointer;
       background: linear-gradient(145deg, #1a2a4a 0%, #0d1b38 100%);
+      flex-shrink: 0;
     }
-    .proof-card-thumb-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
+    .proof-card-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.5));
+      border-radius: 16px;
+      pointer-events: none;
     }
-    .proof-card-thumb:hover .proof-card-thumb-img { transform: scale(1.03); }
-    /* play button */
+    /* play button — exact Figma: left:16px top:156px h:32px w:45px */
     .play-btn {
       position: absolute;
-      bottom: 12px;
-      left: 12px;
-      width: 44px;
+      left: 16px;
+      top: 156px;
+      width: 45px;
       height: 32px;
       background: #ff0000;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
       padding: 0;
+      z-index: 2;
+      animation: playPulse 2s ease-in-out infinite;
     }
-    .proof-card-thumb:hover .play-btn { background: #cc0000; transform: scale(1.08); }
     .play-btn svg { width: 16px; height: 16px; }
 
     .proof-card-body {
-      padding: 8px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 24px;
     }
     .proof-card-desc {
-      font-size: 14px;
+      font-size: 16px;
       color: var(--text-secondary);
-      line-height: 22px;
+      line-height: 24px;
       letter-spacing: 0.16px;
     }
     .proof-card-amount-label {
-      font-size: 14px;
+      font-size: 16px;
       color: var(--text-secondary);
       line-height: 24px;
     }
     .proof-card-amount {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
       color: var(--text-primary);
       line-height: 1;
@@ -302,18 +323,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 20px;
-      margin-top: 2px;
+      padding: 16px 24px;
     }
-    .proof-stars {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .stars-row { display: flex; gap: 3px; }
+    .proof-stars { display: flex; align-items: center; gap: 12px; }
     .proof-count {
       font-size: 14px;
-      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      color: #fff;
       line-height: 24px;
       letter-spacing: 0.16px;
     }
@@ -322,7 +338,8 @@
       align-items: center;
       gap: 8px;
       font-size: 14px;
-      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+      color: #fff;
       line-height: 24px;
     }
     .proof-powered img { height: 20px; width: auto; filter: brightness(0) invert(1); }
@@ -889,38 +906,38 @@
 
             <div class="proof-card">
               <div class="proof-card-logo">
-                <img src="assets/images/company-logo-3.svg" alt="Company" />
+                <img src="assets/images/cybersmart.svg" alt="CyberSmart" />
               </div>
-              <div class="proof-card-thumb" onclick="openVideoModal('CEO Scott Pielsticker — ContactMonkey')">
+              <div class="proof-card-thumb" onclick="openVideoModal('CEO Jamie Akhtar — CyberSmart')">
                 <div style="width:100%;height:100%;background:linear-gradient(145deg,#1c2d4a 0%,#0d1b38 100%);position:absolute;inset:0;"></div>
                 <button class="play-btn" aria-label="Play video">
                   <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
                 </button>
               </div>
               <div class="proof-card-body">
-                <p class="proof-card-desc">CEO Scott Pielsticker shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+                <p class="proof-card-desc">CEO Jamie Akhtar shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
                 <div>
                   <p class="proof-card-amount-label">In the amount of</p>
-                  <p class="proof-card-amount">$1,000,000</p>
+                  <p class="proof-card-amount">$1,452,000</p>
                 </div>
               </div>
             </div>
 
             <div class="proof-card">
               <div class="proof-card-logo">
-                <img src="assets/images/company-logo-2.svg" alt="Company" />
+                <img src="assets/images/cybersmart.svg" alt="CyberSmart" />
               </div>
-              <div class="proof-card-thumb" onclick="openVideoModal('CEO Larry Kim — MobileMonkey')">
+              <div class="proof-card-thumb" onclick="openVideoModal('CEO Jamie Akhtar — CyberSmart')">
                 <div style="width:100%;height:100%;background:linear-gradient(145deg,#1c2d4a 0%,#0d1b38 100%);position:absolute;inset:0;"></div>
                 <button class="play-btn" aria-label="Play video">
                   <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
                 </button>
               </div>
               <div class="proof-card-body">
-                <p class="proof-card-desc">CEO Larry Kim shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
+                <p class="proof-card-desc">CEO Jamie Akhtar shares why he picked Founderpath to be the exclusive non-dilutive capital partner for</p>
                 <div>
                   <p class="proof-card-amount-label">In the amount of</p>
-                  <p class="proof-card-amount">$2,800,000</p>
+                  <p class="proof-card-amount">$1,452,000</p>
                 </div>
               </div>
             </div>
